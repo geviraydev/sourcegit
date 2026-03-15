@@ -158,12 +158,36 @@
 
           <!-- Summary -->
           <Border Grid.Row="2" BorderBrush="{DynamicResource Brush.Border2}" BorderThickness="1,0,1,1" Background="Transparent">
-            <TextBlock Margin="4,0,0,0"
-                       Foreground="{DynamicResource Brush.FG2}"
-                       HorizontalAlignment="Left" VerticalAlignment="Center">
-              <Run Text="{Binding TotalChanges, Mode=OneWay}" FontWeight="Bold"/>
-              <Run Text="{DynamicResource Text.CommitDetail.Changes.Count}"/>
-            </TextBlock>
+            <Grid ColumnDefinitions="*,Auto">
+              <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="4,0,0,0">
+                <TextBlock Foreground="{DynamicResource Brush.FG2}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                  <Run Text="{Binding TotalChanges, Mode=OneWay}" FontWeight="Bold"/>
+                  <Run Text="{DynamicResource Text.CommitDetail.Changes.Count}"/>
+                </TextBlock>
+                
+                <Border Height="16"
+                        Margin="12,0,0,0"
+                        Background="{DynamicResource Brush.Diff.AddedBG}"
+                        CornerRadius="8"
+                        VerticalAlignment="Center">
+                  <TextBlock FontSize="10"
+                             Margin="8,0"
+                             Foreground="{DynamicResource Brush.FG1}"
+                             Text="{Binding TotalAddedLines, StringFormat=+{0}}"/>
+                </Border>
+                
+                <Border Height="16"
+                        Margin="4,0,0,0"
+                        Background="{DynamicResource Brush.Diff.DeletedBG}"
+                        CornerRadius="8"
+                        VerticalAlignment="Center">
+                  <TextBlock FontSize="10"
+                             Margin="8,0"
+                             Foreground="{DynamicResource Brush.FG1}"
+                             Text="{Binding TotalDeletedLines, StringFormat=-{0}}"/>
+                </Border>
+              </StackPanel>
+            </Grid>
           </Border>
         </Grid>
 
