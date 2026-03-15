@@ -96,6 +96,18 @@ namespace SourceGit.ViewModels
             set => SetProperty(ref _visibleChanges, value);
         }
 
+        public int TotalAddedLines
+        {
+            get => _totalAddedLines;
+            private set => SetProperty(ref _totalAddedLines, value);
+        }
+
+        public int TotalDeletedLines
+        {
+            get => _totalDeletedLines;
+            private set => SetProperty(ref _totalDeletedLines, value);
+        }
+
         public List<Models.Change> SelectedChanges
         {
             get => _selectedChanges;
@@ -536,8 +548,9 @@ namespace SourceGit.ViewModels
             Task.Run(async () =>
             {
                 var parent = _commit.Parents.Count == 0 ? Models.Commit.EmptyTreeSHA1 : $"{_commit.SHA}^";
-                var cmd = new Commands.CompareRevisions(_repo.FullPath, parent, _commit.SHA) { CancellationToken = token };
-                var changes = await cmd.ReadAsync().ConfigureAwait(false);
+                var changes = await new Commands.CompareRevisions(_repo.FullPath, parent, _commit.SHA).ReadAsync().ConfigureAwait(false);
+                var stats = await GetChangesStatsAsync(_repo.FullPath, parent, _commit.SHA).ConfigureAwait(false);
+
                 var visible = changes;
                 if (!string.IsNullOrWhiteSpace(_searchChangeFilter))
                 {
@@ -555,6 +568,8 @@ namespace SourceGit.ViewModels
                     {
                         Changes = changes;
                         VisibleChanges = visible;
+                        TotalAddedLines = stats.added;
+                        TotalDeletedLines = stats.deleted;
 
                         if (visible.Count == 0)
                             SelectedChanges = null;
@@ -563,6 +578,72 @@ namespace SourceGit.ViewModels
                     });
                 }
             }, token);
+        }
+
+        private static readonly Dictionary<string, (int added, int deleted)> _statsCache = new();
+        private static readonly object _cacheLock = new();
+
+        internal static async Task<(int added, int deleted)> GetChangesStatsAsync(string repo, string start, string end)
+        {
+            var ignoreWs = Preferences.Instance.IgnoreWhitespaceChangesInDiff;
+            var cacheKey = $"{repo}|{start}|{end}|{ignoreWs}";
+
+            lock (_cacheLock)
+            {
+                if (_statsCache.TryGetValue(cacheKey, out var cached))
+                    return cached;
+            }
+
+            int added = 0, deleted = 0;
+            var based = string.IsNullOrEmpty(start) ? "-R" : start;
+            var args = ignoreWs ? $"diff --stat -w {based} {end}" : $"diff --stat {based} {end}";
+
+            try
+            {
+                using var proc = new System.Diagnostics.Process();
+                proc.StartInfo = new System.Diagnostics.ProcessStartInfo()
+                {
+                    FileName = Native.OS.GitExecutable,
+                    Arguments = args,
+                    WorkingDirectory = repo,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    StandardOutputEncoding = System.Text.Encoding.UTF8,
+                };
+                proc.Start();
+
+                string lastLine = null;
+                while (await proc.StandardOutput.ReadLineAsync().ConfigureAwait(false) is { } line)
+                    lastLine = line;
+
+                await proc.WaitForExitAsync().ConfigureAwait(false);
+
+                if (!string.IsNullOrEmpty(lastLine))
+                {
+                    var match = System.Text.RegularExpressions.Regex.Match(lastLine, @"(\d+)\s+insertions?\(\+\)");
+                    if (match.Success)
+                    {
+                        if (int.TryParse(match.Groups[1].Value, out int val))
+                            added = val;
+                    }
+                    match = System.Text.RegularExpressions.Regex.Match(lastLine, @"(\d+)\s+deletions?\(\-\)");
+                    if (match.Success)
+                    {
+                        if (int.TryParse(match.Groups[1].Value, out int val))
+                            deleted = val;
+                    }
+                }
+            }
+            catch { }
+
+            lock (_cacheLock)
+            {
+                _statsCache[cacheKey] = (added, deleted);
+            }
+
+            return (added, deleted);
         }
 
         private async Task<Models.InlineElementCollector> ParseInlinesInMessageAsync(string message)
@@ -772,6 +853,8 @@ namespace SourceGit.ViewModels
         private List<Models.Change> _changes = [];
         private List<Models.Change> _visibleChanges = [];
         private List<Models.Change> _selectedChanges = null;
+        private int _totalAddedLines = 0;
+        private int _totalDeletedLines = 0;
         private string _searchChangeFilter = string.Empty;
         private DiffContext _diffContext = null;
         private string _viewRevisionFilePath = string.Empty;
