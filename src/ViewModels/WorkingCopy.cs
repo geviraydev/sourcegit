@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SourceGit.ViewModels
@@ -160,6 +161,30 @@ namespace SourceGit.ViewModels
             private set => SetProperty(ref _visibleStaged, value);
         }
 
+        public int UnstagedAddedLines
+        {
+            get => _unstagedAddedLines;
+            private set => SetProperty(ref _unstagedAddedLines, value);
+        }
+
+        public int UnstagedDeletedLines
+        {
+            get => _unstagedDeletedLines;
+            private set => SetProperty(ref _unstagedDeletedLines, value);
+        }
+
+        public int StagedAddedLines
+        {
+            get => _stagedAddedLines;
+            private set => SetProperty(ref _stagedAddedLines, value);
+        }
+
+        public int StagedDeletedLines
+        {
+            get => _stagedDeletedLines;
+            private set => SetProperty(ref _stagedDeletedLines, value);
+        }
+
         public List<Models.Change> SelectedUnstaged
         {
             get => _selectedUnstaged;
@@ -269,6 +294,8 @@ namespace SourceGit.ViewModels
                 return;
             }
 
+            ClearLocalStatsCache();
+
             var lastSelectedUnstaged = new HashSet<string>();
             if (_selectedUnstaged is { Count: > 0 })
             {
@@ -340,6 +367,19 @@ namespace SourceGit.ViewModels
             SelectedStaged = selectedStaged;
             _isLoadingData = false;
 
+            _ = Task.Run(async () =>
+            {
+                var unstagedStats = await GetLocalChangesStatsAsync(_repo.FullPath, false).ConfigureAwait(false);
+                var stagedStats = await GetLocalChangesStatsAsync(_repo.FullPath, true).ConfigureAwait(false);
+                Dispatcher.UIThread.Post(() =>
+                {
+                    UnstagedAddedLines = unstagedStats.added;
+                    UnstagedDeletedLines = unstagedStats.deleted;
+                    StagedAddedLines = stagedStats.added;
+                    StagedDeletedLines = stagedStats.deleted;
+                });
+            });
+
             UpdateInProgressState();
             UpdateDetail();
         }
@@ -367,6 +407,8 @@ namespace SourceGit.ViewModels
             await new Commands.Add(_repo.FullPath, pathSpecFile).Use(log).ExecAsync();
             File.Delete(pathSpecFile);
             log.Complete();
+
+            ClearLocalStatsCache();
 
             _repo.MarkWorkingCopyDirtyManually();
             IsStaging = false;
@@ -406,6 +448,8 @@ namespace SourceGit.ViewModels
                 File.Delete(pathSpecFile);
             }
             log.Complete();
+
+            ClearLocalStatsCache();
 
             _repo.MarkWorkingCopyDirtyManually();
             IsUnstaging = false;
@@ -472,6 +516,7 @@ namespace SourceGit.ViewModels
             }
 
             log.Complete();
+            ClearLocalStatsCache();
             _repo.MarkWorkingCopyDirtyManually();
         }
 
@@ -518,6 +563,7 @@ namespace SourceGit.ViewModels
             }
 
             log.Complete();
+            ClearLocalStatsCache();
             _repo.MarkWorkingCopyDirtyManually();
         }
 
@@ -855,5 +901,84 @@ namespace SourceGit.ViewModels
 
         private bool _hasUnsolvedConflicts = false;
         private InProgressContext _inProgressContext = null;
+        private int _unstagedAddedLines = 0;
+        private int _unstagedDeletedLines = 0;
+        private int _stagedAddedLines = 0;
+        private int _stagedDeletedLines = 0;
+
+        private static readonly Dictionary<string, (int added, int deleted)> _localStatsCache = new();
+        private static readonly object _localStatsCacheLock = new();
+
+        private static async Task<(int added, int deleted)> GetLocalChangesStatsAsync(string repo, bool staged)
+        {
+            var ignoreWs = Preferences.Instance.IgnoreWhitespaceChangesInDiff;
+            var cacheKey = $"{repo}|{(staged ? "staged" : "unstaged")}|{ignoreWs}";
+
+            lock (_localStatsCacheLock)
+            {
+                if (_localStatsCache.TryGetValue(cacheKey, out var cached))
+                    return cached;
+            }
+
+            int added = 0, deleted = 0;
+            var args = staged ? "diff --cached --stat" : "diff --stat";
+            if (ignoreWs)
+                args = staged ? "diff --cached --stat -w" : "diff --stat -w";
+
+            try
+            {
+                using var proc = new System.Diagnostics.Process();
+                proc.StartInfo = new System.Diagnostics.ProcessStartInfo()
+                {
+                    FileName = Native.OS.GitExecutable,
+                    Arguments = args,
+                    WorkingDirectory = repo,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    StandardOutputEncoding = System.Text.Encoding.UTF8,
+                };
+                proc.Start();
+
+                string lastLine = null;
+                while (await proc.StandardOutput.ReadLineAsync().ConfigureAwait(false) is { } line)
+                    lastLine = line;
+
+                await proc.WaitForExitAsync().ConfigureAwait(false);
+
+                if (!string.IsNullOrEmpty(lastLine))
+                {
+                    var match = System.Text.RegularExpressions.Regex.Match(lastLine, @"(\d+)\s+insertions?\(\+\)");
+                    if (match.Success)
+                    {
+                        if (int.TryParse(match.Groups[1].Value, out int val))
+                            added = val;
+                    }
+                    match = System.Text.RegularExpressions.Regex.Match(lastLine, @"(\d+)\s+deletions?\(\-\)");
+                    if (match.Success)
+                    {
+                        if (int.TryParse(match.Groups[1].Value, out int val))
+                            deleted = val;
+                    }
+                }
+            }
+            catch { }
+
+            lock (_localStatsCacheLock)
+            {
+                _localStatsCache[cacheKey] = (added, deleted);
+            }
+
+            return (added, deleted);
+        }
+
+        private void ClearLocalStatsCache()
+        {
+            lock (_localStatsCacheLock)
+            {
+                _localStatsCache.Clear();
+            }
+        }
     }
 }
