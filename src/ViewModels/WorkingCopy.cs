@@ -369,8 +369,8 @@ namespace SourceGit.ViewModels
 
             _ = Task.Run(async () =>
             {
-                var unstagedStats = await GetLocalChangesStatsAsync(_repo.FullPath, false).ConfigureAwait(false);
-                var stagedStats = await GetLocalChangesStatsAsync(_repo.FullPath, true).ConfigureAwait(false);
+                var unstagedStats = await GetLocalChangesStatsAsync(_repo.FullPath, unstaged, false).ConfigureAwait(false);
+                var stagedStats = await GetLocalChangesStatsAsync(_repo.FullPath, staged, true).ConfigureAwait(false);
                 Dispatcher.UIThread.Post(() =>
                 {
                     UnstagedAddedLines = unstagedStats.added;
@@ -909,10 +909,10 @@ namespace SourceGit.ViewModels
         private static readonly Dictionary<string, (int added, int deleted)> _localStatsCache = new();
         private static readonly object _localStatsCacheLock = new();
 
-        private static async Task<(int added, int deleted)> GetLocalChangesStatsAsync(string repo, bool staged)
+        private static async Task<(int added, int deleted)> GetLocalChangesStatsAsync(string repo, List<Models.Change> changes, bool staged)
         {
             var ignoreWs = Preferences.Instance.IgnoreWhitespaceChangesInDiff;
-            var cacheKey = $"{repo}|{(staged ? "staged" : "unstaged")}|{ignoreWs}";
+            var cacheKey = $"{repo}|{(staged ? "staged" : "unstaged")}|{ignoreWs}|{Models.DiffOption.IgnoreCRAtEOL}";
 
             lock (_localStatsCacheLock)
             {
@@ -920,57 +920,26 @@ namespace SourceGit.ViewModels
                     return cached;
             }
 
-            int added = 0, deleted = 0;
-            var args = staged ? "diff --cached --stat" : "diff --stat";
-            if (ignoreWs)
-                args = staged ? "diff --cached --stat -w" : "diff --stat -w";
-
-            try
+            var stats = await new Commands.QueryDiffLineStats(repo, staged, ignoreWs).GetResultAsync().ConfigureAwait(false);
+            if (!staged)
             {
-                using var proc = new System.Diagnostics.Process();
-                proc.StartInfo = new System.Diagnostics.ProcessStartInfo()
+                foreach (var change in changes)
                 {
-                    FileName = Native.OS.GitExecutable,
-                    Arguments = args,
-                    WorkingDirectory = repo,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    StandardOutputEncoding = System.Text.Encoding.UTF8,
-                };
-                proc.Start();
+                    if (change.WorkTree != Models.ChangeState.Untracked)
+                        continue;
 
-                string lastLine = null;
-                while (await proc.StandardOutput.ReadLineAsync().ConfigureAwait(false) is { } line)
-                    lastLine = line;
-
-                await proc.WaitForExitAsync().ConfigureAwait(false);
-
-                if (!string.IsNullOrEmpty(lastLine))
-                {
-                    var match = System.Text.RegularExpressions.Regex.Match(lastLine, @"(\d+)\s+insertions?\(\+\)");
-                    if (match.Success)
-                    {
-                        if (int.TryParse(match.Groups[1].Value, out int val))
-                            added = val;
-                    }
-                    match = System.Text.RegularExpressions.Regex.Match(lastLine, @"(\d+)\s+deletions?\(\-\)");
-                    if (match.Success)
-                    {
-                        if (int.TryParse(match.Groups[1].Value, out int val))
-                            deleted = val;
-                    }
+                    var fileStats = await new Commands.QueryDiffLineStats(repo, change, true, ignoreWs).GetResultAsync().ConfigureAwait(false);
+                    stats.added += fileStats.added;
+                    stats.deleted += fileStats.deleted;
                 }
             }
-            catch { }
 
             lock (_localStatsCacheLock)
             {
-                _localStatsCache[cacheKey] = (added, deleted);
+                _localStatsCache[cacheKey] = stats;
             }
 
-            return (added, deleted);
+            return stats;
         }
 
         private void ClearLocalStatsCache()

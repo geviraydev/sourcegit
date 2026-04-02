@@ -591,7 +591,7 @@ namespace SourceGit.ViewModels
         internal static async Task<(int added, int deleted)> GetChangesStatsAsync(string repo, string start, string end)
         {
             var ignoreWs = Preferences.Instance.IgnoreWhitespaceChangesInDiff;
-            var cacheKey = $"{repo}|{start}|{end}|{ignoreWs}";
+            var cacheKey = $"{repo}|{start}|{end}|{ignoreWs}|{Models.DiffOption.IgnoreCRAtEOL}";
 
             lock (_cacheLock)
             {
@@ -599,56 +599,14 @@ namespace SourceGit.ViewModels
                     return cached;
             }
 
-            int added = 0, deleted = 0;
-            var based = string.IsNullOrEmpty(start) ? "-R" : start;
-            var args = ignoreWs ? $"diff --stat -w {based} {end}" : $"diff --stat {based} {end}";
-
-            try
-            {
-                using var proc = new System.Diagnostics.Process();
-                proc.StartInfo = new System.Diagnostics.ProcessStartInfo()
-                {
-                    FileName = Native.OS.GitExecutable,
-                    Arguments = args,
-                    WorkingDirectory = repo,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    StandardOutputEncoding = System.Text.Encoding.UTF8,
-                };
-                proc.Start();
-
-                string lastLine = null;
-                while (await proc.StandardOutput.ReadLineAsync().ConfigureAwait(false) is { } line)
-                    lastLine = line;
-
-                await proc.WaitForExitAsync().ConfigureAwait(false);
-
-                if (!string.IsNullOrEmpty(lastLine))
-                {
-                    var match = System.Text.RegularExpressions.Regex.Match(lastLine, @"(\d+)\s+insertions?\(\+\)");
-                    if (match.Success)
-                    {
-                        if (int.TryParse(match.Groups[1].Value, out int val))
-                            added = val;
-                    }
-                    match = System.Text.RegularExpressions.Regex.Match(lastLine, @"(\d+)\s+deletions?\(\-\)");
-                    if (match.Success)
-                    {
-                        if (int.TryParse(match.Groups[1].Value, out int val))
-                            deleted = val;
-                    }
-                }
-            }
-            catch { }
+            var stats = await new Commands.QueryDiffLineStats(repo, start, end, ignoreWs).GetResultAsync().ConfigureAwait(false);
 
             lock (_cacheLock)
             {
-                _statsCache[cacheKey] = (added, deleted);
+                _statsCache[cacheKey] = stats;
             }
 
-            return (added, deleted);
+            return stats;
         }
 
         private async Task<Models.InlineElementCollector> ParseInlinesInMessageAsync(string message)
