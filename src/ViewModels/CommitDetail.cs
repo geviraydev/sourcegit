@@ -585,7 +585,9 @@ namespace SourceGit.ViewModels
             }, token);
         }
 
+        private const int MAX_STATS_CACHE_ENTRIES = 256;
         private static readonly Dictionary<string, (int added, int deleted)> _statsCache = new();
+        private static readonly Queue<string> _statsCacheKeys = new();
         private static readonly object _cacheLock = new();
 
         internal static async Task<(int added, int deleted)> GetChangesStatsAsync(string repo, string start, string end)
@@ -603,6 +605,13 @@ namespace SourceGit.ViewModels
 
             lock (_cacheLock)
             {
+                if (!_statsCache.ContainsKey(cacheKey))
+                {
+                    _statsCacheKeys.Enqueue(cacheKey);
+                    if (_statsCacheKeys.Count > MAX_STATS_CACHE_ENTRIES)
+                        _statsCache.Remove(_statsCacheKeys.Dequeue());
+                }
+
                 _statsCache[cacheKey] = stats;
             }
 
