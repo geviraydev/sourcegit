@@ -56,17 +56,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![es__ES](https://img.shields.io/badge/es__ES-99.60%25-yellow)
-
-<details>
-<summary>Missing keys in es_ES.axaml</summary>
-
-- Text.About.GitSourceRevision
-- Text.BranchCM.CompareWithUpstream
-- Text.Preferences.Git.UseStashAndReapplyByDefault
-- Text.RemoteCM.EnableAutoFetch
-
-</details>
+### ![es__ES](https://img.shields.io/badge/es__ES-%E2%88%9A-brightgreen)
 
 ### ![fr__FR](https://img.shields.io/badge/fr__FR-89.78%25-yellow)
 
