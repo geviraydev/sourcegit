@@ -392,7 +392,8 @@
                     HorizontalAlignment="Right" VerticalAlignment="Top"
                     Margin="0,2,8,0"
                     IsChecked="{Binding IsCollapseDetails, Mode=TwoWay}"
-                    IsVisible="{Binding Source={x:Static vm:Preferences.Instance}, Path=UseTwoColumnsLayoutInHistories, Mode=OneWay, Converter={x:Static BoolConverters.Not}}">
+                    IsVisible="{Binding Source={x:Static vm:Preferences.Instance}, Path=UseTwoColumnsLayoutInHistories, Mode=OneWay, Converter={x:Static BoolConverters.Not}}"
+                    ToolTip.Tip="{DynamicResource Text.CommitDetail.CollapseToBottom}">
         <Path Width="14" Height="14" Data="{StaticResource Icons.CollapseToBottom}" Margin="0,3,0,0"/>
       </ToggleButton>
     </Grid>
