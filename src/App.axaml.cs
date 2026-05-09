@@ -367,7 +367,7 @@ namespace SourceGit
             {
                 desktop.MainWindow = new Views.DirHistories()
                 {
-                    DataContext = new ViewModels.DirHistories(repo, relativePath)
+                    DataContext = new ViewModels.DirHistories(repo, relativePath.TrimEnd('/', '\\'))
                 };
             }
             else

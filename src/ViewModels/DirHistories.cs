@@ -80,7 +80,7 @@ namespace SourceGit.ViewModels
             Title = dir;
 
             var gitDir = new Commands.QueryGitDir(repoPath).GetResult();
-            _repo = new Repository(true, repoPath, gitDir);
+            _repo = new Repository(true, repoPath, gitDir); // Trait repository as a bare repository to disable some file operations.
             _repo.RefreshBranches();
 
             _detail = new CommitDetail(_repo, null);
