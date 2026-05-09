@@ -294,6 +294,15 @@ namespace SourceGit.Views
             set => SetValue(IsScrollToTopVisibleProperty, value);
         }
 
+        public static readonly StyledProperty<bool> IsDetailsPanelExpandedProperty =
+            AvaloniaProperty.Register<Histories, bool>(nameof(IsDetailsPanelExpanded), true);
+
+        public bool IsDetailsPanelExpanded
+        {
+            get => GetValue(IsDetailsPanelExpandedProperty);
+            set => SetValue(IsDetailsPanelExpandedProperty, value);
+        }
+
         public Histories()
         {
             InitializeComponent();

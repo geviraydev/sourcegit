@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.LogicalTree;
@@ -13,6 +14,15 @@ namespace SourceGit.Views
 {
     public partial class CommitDetail : UserControl
     {
+        public static readonly StyledProperty<bool> IsDetailsPanelExpandedProperty =
+            AvaloniaProperty.Register<CommitDetail, bool>(nameof(IsDetailsPanelExpanded));
+
+        public bool IsDetailsPanelExpanded
+        {
+            get => GetValue(IsDetailsPanelExpandedProperty);
+            set => SetValue(IsDetailsPanelExpandedProperty, value);
+        }
+
         public CommitDetail()
         {
             InitializeComponent();
