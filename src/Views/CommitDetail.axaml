@@ -13,7 +13,9 @@
     <!-- Information Page -->
     <TabItem>
       <TabItem.Header>
-        <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Info}"/>
+        <Border Background="Transparent" PointerPressed="OnTabHeaderPointerPressed">
+          <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Info}"/>
+        </Border>
       </TabItem.Header>
 
       <ScrollViewer Margin="4,0,0,0" Offset="{Binding ScrollOffset, Mode=TwoWay}" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
@@ -83,14 +85,18 @@
 
     <TabItem>
       <TabItem.Header>
-        <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Changes}"/>
+        <Border Background="Transparent" PointerPressed="OnTabHeaderPointerPressed">
+          <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Changes}"/>
+        </Border>
       </TabItem.Header>
       <v:CommitChanges Margin="4,0"/>
     </TabItem>
 
     <TabItem>
       <TabItem.Header>
-        <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Files}"/>
+        <Border Background="Transparent" PointerPressed="OnTabHeaderPointerPressed">
+          <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Files}"/>
+        </Border>
       </TabItem.Header>
       <v:RevisionFiles Margin="4,0"/>
     </TabItem>

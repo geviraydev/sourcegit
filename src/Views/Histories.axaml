@@ -14,7 +14,7 @@
     <v:HistoriesLayout.RowDefinitions>
       <RowDefinition Height="{Binding TopArea, Mode=TwoWay}" MinHeight="100"/>
       <RowDefinition Height="3"/>
-      <RowDefinition Height="{Binding BottomArea, Mode=TwoWay}" MinHeight="200"/>
+      <RowDefinition Height="{Binding BottomArea, Mode=TwoWay}" MinHeight="28"/>
     </v:HistoriesLayout.RowDefinitions>
 
     <v:HistoriesLayout.ColumnDefinitions>
@@ -268,49 +268,136 @@
                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                   Background="{DynamicResource Brush.Window}"
                   BorderBrush="{DynamicResource Brush.Border0}"
-                  Focusable="False"/>
+                  Focusable="False">
+      <GridSplitter.IsEnabled>
+        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+          <Binding Source="{x:Static vm:Preferences.Instance}" Path="UseTwoColumnsLayoutInHistories"/>
+          <Binding Path="IsCollapseDetails" Converter="{x:Static BoolConverters.Not}"/>
+        </MultiBinding>
+      </GridSplitter.IsEnabled>
+    </GridSplitter>
 
     <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
-      <Grid IsVisible="{Binding DetailContext, Converter={x:Static ObjectConverters.IsNull}}">
-        <Path Width="128" Height="128"
-              Data="{StaticResource Icons.Detail}"
-              HorizontalAlignment="Center"
-              Fill="{DynamicResource Brush.FG2}"/>
+      <ContentControl>
+        <ContentControl.Content>
+          <Binding Path="DetailContext">
+            <Binding.TargetNullValue>
+              <TabControl Padding="0,4">
+                <TabItem>
+                  <TabItem.Header>
+                    <Border Background="Transparent" PointerPressed="OnTabHeaderPointerPressed">
+                      <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Info}"/>
+                    </Border>
+                  </TabItem.Header>
 
-        <StackPanel Margin="0,8" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-          <Path Width="12" Height="12" VerticalAlignment="Center" Data="{StaticResource Icons.Info}" Fill="{DynamicResource Brush.FG2}"/>
-          <TextBlock Margin="4,0" Text="{DynamicResource Text.Histories.Tips.Prefix}" FontWeight="Bold" Foreground="{DynamicResource Brush.FG2}"/>
-          <TextBlock Text="{DynamicResource Text.Histories.Tips}" Foreground="{DynamicResource Brush.FG2}" IsVisible="{OnPlatform True, macOS=False}"/>
-          <TextBlock Text="{DynamicResource Text.Histories.Tips.MacOS}" Foreground="{DynamicResource Brush.FG2}" IsVisible="{OnPlatform False, macOS=True}"/>
-        </StackPanel>
-      </Grid>
+                  <Grid Margin="0,32,0,0" ClipToBounds="True">
+                    <Path Width="128" Height="128"
+                          Data="{StaticResource Icons.Detail}"
+                          HorizontalAlignment="Center"
+                          Fill="{DynamicResource Brush.FG2}"/>
 
-      <ContentControl Content="{Binding DetailContext}">
+                    <StackPanel Margin="0,8" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                      <Path Width="12" Height="12" VerticalAlignment="Center" Data="{StaticResource Icons.Info}" Fill="{DynamicResource Brush.FG2}"/>
+                      <TextBlock Margin="4,0" Text="{DynamicResource Text.Histories.Tips.Prefix}" FontWeight="Bold" Foreground="{DynamicResource Brush.FG2}"/>
+                      <TextBlock Text="{DynamicResource Text.Histories.Tips}" Foreground="{DynamicResource Brush.FG2}" IsVisible="{OnPlatform True, macOS=False}"/>
+                      <TextBlock Text="{DynamicResource Text.Histories.Tips.MacOS}" Foreground="{DynamicResource Brush.FG2}" IsVisible="{OnPlatform False, macOS=True}"/>
+                    </StackPanel>
+                  </Grid>
+                </TabItem>
+
+                <TabItem IsEnabled="False">
+                  <TabItem.Header>
+                    <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Changes}"/>
+                  </TabItem.Header>
+                </TabItem>
+
+                <TabItem IsEnabled="False">
+                  <TabItem.Header>
+                    <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Files}"/>
+                  </TabItem.Header>
+                </TabItem>
+              </TabControl>
+            </Binding.TargetNullValue>
+          </Binding>
+        </ContentControl.Content>
+        
         <ContentControl.DataTemplates>
           <DataTemplate DataType="vm:CommitDetail">
             <v:CommitDetail/>
           </DataTemplate>
 
           <DataTemplate DataType="vm:RevisionCompare">
-            <v:RevisionCompare/>
+            <TabControl SelectedIndex="1" Padding="0">
+              <TabItem IsEnabled="False">
+                <TabItem.Header>
+                  <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Info}"/>
+                </TabItem.Header>
+              </TabItem>
+
+              <TabItem>
+                <TabItem.Header>
+                  <Border Background="Transparent" PointerPressed="OnTabHeaderPointerPressed">
+                    <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Changes}"/>
+                  </Border>
+                </TabItem.Header>
+
+                <v:RevisionCompare/>
+              </TabItem>
+
+              <TabItem IsEnabled="False">
+                <TabItem.Header>
+                  <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Files}"/>
+                </TabItem.Header>
+              </TabItem>
+            </TabControl>
           </DataTemplate>
 
           <DataTemplate DataType="m:Count">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-              <Path Width="128" Height="128"
-                    Data="{StaticResource Icons.Detail}"
-                    HorizontalAlignment="Center"
-                    Fill="{DynamicResource Brush.FG2}"/>
+            <TabControl Padding="0,4">
+              <TabItem>
+                <TabItem.Header>
+                  <Border Background="Transparent" PointerPressed="OnTabHeaderPointerPressed">
+                    <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Info}"/>
+                  </Border>
+                </TabItem.Header>
 
-              <TextBlock HorizontalAlignment="Center"
-                         Margin="0,16"
-                         FontSize="24" FontWeight="Bold"
-                         Foreground="{DynamicResource Brush.FG2}"
-                         Text="{Binding Value, Converter={x:Static c:StringConverters.FormatByResourceKey}, ConverterParameter='Histories.Selected'}"/>
-            </StackPanel>
+                <StackPanel ClipToBounds="True" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                  <Path Width="128" Height="128"
+                        Data="{StaticResource Icons.Detail}"
+                        HorizontalAlignment="Center"
+                        Fill="{DynamicResource Brush.FG2}"/>
+
+                  <TextBlock HorizontalAlignment="Center"
+                             Margin="0,16"
+                             FontSize="24" FontWeight="Bold"
+                             Foreground="{DynamicResource Brush.FG2}"
+                             Text="{Binding Value, Converter={x:Static c:StringConverters.FormatByResourceKey}, ConverterParameter='Histories.Selected'}"/>
+                </StackPanel>
+              </TabItem>
+
+              <TabItem IsEnabled="False">
+                <TabItem.Header>
+                  <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Changes}"/>
+                </TabItem.Header>
+              </TabItem>
+
+              <TabItem IsEnabled="False">
+                <TabItem.Header>
+                  <TextBlock Classes="tab_header" Text="{DynamicResource Text.CommitDetail.Files}"/>
+                </TabItem.Header>
+              </TabItem>
+            </TabControl>
           </DataTemplate>
         </ContentControl.DataTemplates>
       </ContentControl>
+
+      <ToggleButton Classes="line_path"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Margin="0,2,8,0"
+                    IsChecked="{Binding IsCollapseDetails, Mode=TwoWay}"
+                    IsVisible="{Binding Source={x:Static vm:Preferences.Instance}, Path=UseTwoColumnsLayoutInHistories, Mode=OneWay, Converter={x:Static BoolConverters.Not}}">
+        <Path Width="14" Height="14" Data="{StaticResource Icons.CollapseToBottom}" Margin="0,3,0,0"/>
+      </ToggleButton>
     </Grid>
   </v:HistoriesLayout>
 </UserControl>

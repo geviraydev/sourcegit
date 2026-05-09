@@ -1385,10 +1385,13 @@
     <Setter Property="Foreground" Value="{DynamicResource Brush.FG1}"/>
     <Setter Property="Opacity" Value="1"/>
   </Style>
-
   <Style Selector="TabItem:selected TextBlock.tab_header">
     <Setter Property="Foreground" Value="{DynamicResource Brush.Accent}"/>
     <Setter Property="Opacity" Value="1"/>
+  </Style>
+  <Style Selector="TabItem:disabled TextBlock.tab_header">
+    <Setter Property="Foreground" Value="{DynamicResource Brush.FG1}"/>
+    <Setter Property="Opacity" Value="0.35"/>
   </Style>
 
   <Style Selector="NumericUpDown">

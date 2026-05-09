@@ -7,6 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.LogicalTree;
 using Avalonia.Platform.Storage;
+using Avalonia.VisualTree;
 
 namespace SourceGit.Views
 {
@@ -470,6 +471,19 @@ namespace SourceGit.Views
             menu.Items.Add(copyPath);
             menu.Items.Add(copyFullPath);
             return menu;
+        }
+
+        private void OnTabHeaderPointerPressed(object sender, PointerPressedEventArgs e)
+        {
+            if (ViewModels.Preferences.Instance.UseTwoColumnsLayoutInHistories)
+                return;
+
+            var historiesView = this.FindAncestorOfType<Histories>();
+            if (historiesView is not { DataContext: ViewModels.Histories vm })
+                return;
+
+            if (vm.IsCollapseDetails)
+                vm.IsCollapseDetails = false;
         }
 
         private async void OnCommitListKeyDown(object sender, KeyEventArgs e)

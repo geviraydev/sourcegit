@@ -138,8 +138,25 @@ namespace SourceGit.ViewModels
 
         public GridLength BottomArea
         {
-            get => _bottomArea;
-            set => SetProperty(ref _bottomArea, value);
+            get => _isCollapseDetails ? new GridLength(28, GridUnitType.Pixel) : _bottomArea;
+            set
+            {
+                if (!Preferences.Instance.UseTwoColumnsLayoutInHistories && !_isCollapseDetails)
+                    SetProperty(ref _bottomArea, value);
+            }
+        }
+
+        public bool IsCollapseDetails
+        {
+            get => _isCollapseDetails;
+            set
+            {
+                if (!Preferences.Instance.UseTwoColumnsLayoutInHistories && SetProperty(ref _isCollapseDetails, value))
+                {
+                    OnPropertyChanged(nameof(TopArea));
+                    OnPropertyChanged(nameof(BottomArea));
+                }
+            }
         }
 
         public Histories(Repository repo)
@@ -493,5 +510,6 @@ namespace SourceGit.ViewModels
         private GridLength _rightArea = new GridLength(1, GridUnitType.Star);
         private GridLength _topArea = new GridLength(1, GridUnitType.Star);
         private GridLength _bottomArea = new GridLength(1, GridUnitType.Star);
+        private bool _isCollapseDetails = false;
     }
 }
