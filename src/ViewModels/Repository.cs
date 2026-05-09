@@ -168,7 +168,7 @@ namespace SourceGit.ViewModels
                 var oldHead = _currentBranch?.Head;
                 if (SetProperty(ref _currentBranch, value))
                 {
-                    _histories.NotifyCurrentBranchChanged();
+                    _histories?.NotifyCurrentBranchChanged();
                     if (value != null && !value.Head.Equals(oldHead, StringComparison.Ordinal) && _workingCopy is { UseAmend: true })
                         _workingCopy.UseAmend = false;
                 }
@@ -458,13 +458,13 @@ namespace SourceGit.ViewModels
             {
                 _gitCommonDir = GitDir;
             }
+
+            _settings = Models.RepositorySettings.Get(_gitCommonDir);
+            _uiStates = Models.RepositoryUIStates.Load(GitDir);
         }
 
         public void Open()
         {
-            _settings = Models.RepositorySettings.Get(_gitCommonDir);
-            _uiStates = Models.RepositoryUIStates.Load(GitDir);
-
             try
             {
                 _watcher = new Models.Watcher(this, FullPath, _gitCommonDir);
