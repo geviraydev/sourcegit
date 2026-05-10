@@ -269,7 +269,7 @@
                   Background="{DynamicResource Brush.Window}"
                   BorderBrush="{DynamicResource Brush.Border0}"
                   Focusable="False"
-                  IsVisible="{Binding #ThisControl.IsDetailsPanelExpanded, Mode=OneWay}"/>
+                  IsEnabled="{Binding #ThisControl.IsDetailsPanelExpanded, Mode=OneWay}"/>
 
     <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
       <ContentControl>
