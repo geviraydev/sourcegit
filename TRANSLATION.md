@@ -6,7 +6,7 @@ This document shows the translation status of each locale file in the repository
 
 ### ![en_US](https://img.shields.io/badge/en__US-%E2%88%9A-brightgreen)
 
-### ![de__DE](https://img.shields.io/badge/de__DE-95.65%25-yellow)
+### ![de__DE](https://img.shields.io/badge/de__DE-95.36%25-yellow)
 
 <details>
 <summary>Missing keys in de_DE.axaml</summary>
@@ -34,6 +34,9 @@ This document shows the translation status of each locale file in the repository
 - Text.Diff.Submodule.UncommittedChanges
 - Text.Discard.IncludeModified
 - Text.GotoRevisionSelector
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Repo.CreateBranch
 - Text.Hotkeys.Repo.GoToChild
@@ -57,16 +60,19 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![es__ES](https://img.shields.io/badge/es__ES-99.90%25-yellow)
+### ![es__ES](https://img.shields.io/badge/es__ES-99.60%25-yellow)
 
 <details>
 <summary>Missing keys in es_ES.axaml</summary>
 
 - Text.CommitDetail.CollapseToBottom
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 
 </details>
 
-### ![fr__FR](https://img.shields.io/badge/fr__FR-89.69%25-yellow)
+### ![fr__FR](https://img.shields.io/badge/fr__FR-89.42%25-yellow)
 
 <details>
 <summary>Missing keys in fr_FR.axaml</summary>
@@ -111,6 +117,9 @@ This document shows the translation status of each locale file in the repository
 - Text.GotoRevisionSelector
 - Text.Histories.Header.DateTime
 - Text.Histories.ShowColumns
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Global.ShowWorkspaceDropdownMenu
 - Text.Hotkeys.Global.Zoom
@@ -176,7 +185,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![id__ID](https://img.shields.io/badge/id__ID-87.56%25-yellow)
+### ![id__ID](https://img.shields.io/badge/id__ID-87.30%25-yellow)
 
 <details>
 <summary>Missing keys in id_ID.axaml</summary>
@@ -235,6 +244,9 @@ This document shows the translation status of each locale file in the repository
 - Text.GotoRevisionSelector
 - Text.Histories.Header.DateTime
 - Text.Histories.ShowColumns
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Global.ShowWorkspaceDropdownMenu
 - Text.Hotkeys.Global.Zoom
@@ -307,7 +319,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![it__IT](https://img.shields.io/badge/it__IT-95.05%25-yellow)
+### ![it__IT](https://img.shields.io/badge/it__IT-94.76%25-yellow)
 
 <details>
 <summary>Missing keys in it_IT.axaml</summary>
@@ -338,6 +350,9 @@ This document shows the translation status of each locale file in the repository
 - Text.GotoRevisionSelector
 - Text.Histories.Header.DateTime
 - Text.Histories.ShowColumns
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Repo.CreateBranch
 - Text.Hotkeys.Repo.GoToChild
@@ -364,7 +379,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ja__JP](https://img.shields.io/badge/ja__JP-95.96%25-yellow)
+### ![ja__JP](https://img.shields.io/badge/ja__JP-95.67%25-yellow)
 
 <details>
 <summary>Missing keys in ja_JP.axaml</summary>
@@ -391,6 +406,9 @@ This document shows the translation status of each locale file in the repository
 - Text.DealWithLocalChanges.DoNothing
 - Text.Diff.Submodule.UncommittedChanges
 - Text.Discard.IncludeModified
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Repo.CreateBranch
 - Text.Init.CommandTip
@@ -412,7 +430,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ko__KR](https://img.shields.io/badge/ko__KR-87.87%25-yellow)
+### ![ko__KR](https://img.shields.io/badge/ko__KR-87.60%25-yellow)
 
 <details>
 <summary>Missing keys in ko_KR.axaml</summary>
@@ -466,6 +484,9 @@ This document shows the translation status of each locale file in the repository
 - Text.GotoRevisionSelector
 - Text.Histories.Header.DateTime
 - Text.Histories.ShowColumns
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Global.ShowWorkspaceDropdownMenu
 - Text.Hotkeys.Global.Zoom
@@ -540,7 +561,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![pt__BR](https://img.shields.io/badge/pt__BR-66.53%25-red)
+### ![pt__BR](https://img.shields.io/badge/pt__BR-66.33%25-red)
 
 <details>
 <summary>Missing keys in pt_BR.axaml</summary>
@@ -687,6 +708,9 @@ This document shows the translation status of each locale file in the repository
 - Text.GotoRevisionSelector
 - Text.Histories.Header.DateTime
 - Text.Histories.ShowColumns
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.Clone
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Global.ShowWorkspaceDropdownMenu
@@ -879,9 +903,18 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![ru__RU](https://img.shields.io/badge/ru__RU-%E2%88%9A-brightgreen)
+### ![ru__RU](https://img.shields.io/badge/ru__RU-99.70%25-yellow)
 
-### ![ta__IN](https://img.shields.io/badge/ta__IN-68.55%25-red)
+<details>
+<summary>Missing keys in ru_RU.axaml</summary>
+
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
+
+</details>
+
+### ![ta__IN](https://img.shields.io/badge/ta__IN-68.35%25-red)
 
 <details>
 <summary>Missing keys in ta_IN.axaml</summary>
@@ -1041,6 +1074,9 @@ This document shows the translation status of each locale file in the repository
 - Text.GotoRevisionSelector
 - Text.Histories.Header.DateTime
 - Text.Histories.ShowColumns
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Global.ShowWorkspaceDropdownMenu
 - Text.Hotkeys.Global.SwitchTab
@@ -1200,7 +1236,7 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![uk__UA](https://img.shields.io/badge/uk__UA-69.36%25-red)
+### ![uk__UA](https://img.shields.io/badge/uk__UA-69.15%25-red)
 
 <details>
 <summary>Missing keys in uk_UA.axaml</summary>
@@ -1356,6 +1392,9 @@ This document shows the translation status of each locale file in the repository
 - Text.GotoRevisionSelector
 - Text.Histories.Header.DateTime
 - Text.Histories.ShowColumns
+- Text.HistoriesDetailsStandalone
+- Text.HistoriesDetailsStandalone.CommitDetail
+- Text.HistoriesDetailsStandalone.RevisionCompare
 - Text.Hotkeys.Global.OpenLocalRepository
 - Text.Hotkeys.Global.ShowWorkspaceDropdownMenu
 - Text.Hotkeys.Global.SwitchTab
@@ -1511,6 +1550,20 @@ This document shows the translation status of each locale file in the repository
 
 </details>
 
-### ![zh__CN](https://img.shields.io/badge/zh__CN-%E2%88%9A-brightgreen)
+### ![zh__CN](https://img.shields.io/badge/zh__CN-99.90%25-yellow)
 
-### ![zh__TW](https://img.shields.io/badge/zh__TW-%E2%88%9A-brightgreen)
+<details>
+<summary>Missing keys in zh_CN.axaml</summary>
+
+- Text.HistoriesDetailsStandalone
+
+</details>
+
+### ![zh__TW](https://img.shields.io/badge/zh__TW-99.90%25-yellow)
+
+<details>
+<summary>Missing keys in zh_TW.axaml</summary>
+
+- Text.HistoriesDetailsStandalone
+
+</details>
