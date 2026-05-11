@@ -145,7 +145,6 @@
   <x:String x:Key="Text.CommitCM.CopySHA" xml:space="preserve">SHA</x:String>
   <x:String x:Key="Text.CommitCM.CopySubject" xml:space="preserve">Oggetto</x:String>
   <x:String x:Key="Text.CommitCM.CustomAction" xml:space="preserve">Azione Personalizzata</x:String>
-  <x:String x:Key="Text.CommitCM.Drop" xml:space="preserve">Scarta Commit</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase" xml:space="preserve">Rebase Interattivo</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Drop" xml:space="preserve">Scarta...</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Edit" xml:space="preserve">Modifica...</x:String>
@@ -159,10 +158,7 @@
   <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">Ribasa ${0}$ su ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">Resetta ${0}$ su ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">Annulla Commit</x:String>
-  <x:String x:Key="Text.CommitCM.Reword" xml:space="preserve">Modifica</x:String>
   <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">Salva come Patch...</x:String>
-  <x:String x:Key="Text.CommitCM.Squash" xml:space="preserve">Compatta nel Genitore</x:String>
-  <x:String x:Key="Text.CommitCM.Fixup" xml:space="preserve">Correggi nel Genitore</x:String>
   <x:String x:Key="Text.CommitDetail.Changes" xml:space="preserve">MODIFICHE</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Count" xml:space="preserve">file modificati</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Search" xml:space="preserve">Cerca Modifiche...</x:String>
@@ -379,9 +375,6 @@ ${pure_files:N} Come ${files:N}, ma senza cartelle</x:String>
   <x:String x:Key="Text.Discard.IncludeUntracked" xml:space="preserve">Includi file non tracciati</x:String>
   <x:String x:Key="Text.Discard.Total" xml:space="preserve">Un totale di {0} modifiche saranno scartate</x:String>
   <x:String x:Key="Text.Discard.Warning" xml:space="preserve">Questa azione non può essere annullata!!!</x:String>
-  <x:String x:Key="Text.DropHead" xml:space="preserve">Scarta Commit</x:String>
-  <x:String x:Key="Text.DropHead.Commit" xml:space="preserve">Commit:</x:String>
-  <x:String x:Key="Text.DropHead.NewHead" xml:space="preserve">Nuovo HEAD:</x:String>
   <x:String x:Key="Text.EditBranchDescription" xml:space="preserve">Modifica Descrizione del Branch</x:String>
   <x:String x:Key="Text.EditBranchDescription.Target" xml:space="preserve">Destinazione:</x:String>
   <x:String x:Key="Text.EditRepositoryNode.Bookmark" xml:space="preserve">Segnalibro:</x:String>
@@ -795,7 +788,6 @@ ${pure_files:N} Come ${files:N}, ma senza cartelle</x:String>
   <x:String x:Key="Text.Revert" xml:space="preserve">Ripristina Commit</x:String>
   <x:String x:Key="Text.Revert.Commit" xml:space="preserve">Commit:</x:String>
   <x:String x:Key="Text.Revert.CommitChanges" xml:space="preserve">Commit delle modifiche di ripristino</x:String>
-  <x:String x:Key="Text.Reword" xml:space="preserve">Modifica Messaggio di Commit</x:String>
   <x:String x:Key="Text.Running" xml:space="preserve">In esecuzione. Attendere...</x:String>
   <x:String x:Key="Text.Save" xml:space="preserve">SALVA</x:String>
   <x:String x:Key="Text.SaveAs" xml:space="preserve">Salva come...</x:String>
@@ -821,9 +813,6 @@ ${pure_files:N} Come ${files:N}, ma senza cartelle</x:String>
   <x:String x:Key="Text.SetUpstream.Upstream" xml:space="preserve">Upstream:</x:String>
   <x:String x:Key="Text.SHALinkCM.CopySHA" xml:space="preserve">Copia SHA</x:String>
   <x:String x:Key="Text.SHALinkCM.NavigateTo" xml:space="preserve">Vai a</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Squash" xml:space="preserve">Squash HEAD nel Genitore</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Fixup" xml:space="preserve">Fixup HEAD nel Genitore</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Into" xml:space="preserve">In:</x:String>
   <x:String x:Key="Text.SSHKey" xml:space="preserve">Chiave Privata SSH:</x:String>
   <x:String x:Key="Text.SSHKey.Placeholder" xml:space="preserve">Percorso per la chiave SSH privata</x:String>
   <x:String x:Key="Text.Start" xml:space="preserve">AVVIA</x:String>

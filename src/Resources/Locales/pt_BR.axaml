@@ -125,9 +125,7 @@
   <x:String x:Key="Text.CommitCM.CopySHA" xml:space="preserve">SHA</x:String>
   <x:String x:Key="Text.CommitCM.CustomAction" xml:space="preserve">Ação customizada</x:String>
   <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">Reverter Commit</x:String>
-  <x:String x:Key="Text.CommitCM.Reword" xml:space="preserve">Modificar Mensagem</x:String>
   <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">Salvar como Patch...</x:String>
-  <x:String x:Key="Text.CommitCM.Squash" xml:space="preserve">Mesclar ao Commit Pai</x:String>
   <x:String x:Key="Text.CommitDetail.Changes" xml:space="preserve">ALTERAÇÕES</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Search" xml:space="preserve">Buscar Alterações...</x:String>
   <x:String x:Key="Text.CommitDetail.Files" xml:space="preserve">ARQUIVOS</x:String>
@@ -560,7 +558,6 @@
   <x:String x:Key="Text.Revert" xml:space="preserve">Reverter Commit</x:String>
   <x:String x:Key="Text.Revert.Commit" xml:space="preserve">Commit:</x:String>
   <x:String x:Key="Text.Revert.CommitChanges" xml:space="preserve">Commitar alterações de reversão</x:String>
-  <x:String x:Key="Text.Reword" xml:space="preserve">Reescrever Mensagem do Commit</x:String>
   <x:String x:Key="Text.Running" xml:space="preserve">Executando. Por favor, aguarde...</x:String>
   <x:String x:Key="Text.Save" xml:space="preserve">SALVAR</x:String>
   <x:String x:Key="Text.SaveAs" xml:space="preserve">Salvar Como...</x:String>

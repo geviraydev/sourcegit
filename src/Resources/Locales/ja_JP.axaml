@@ -146,7 +146,6 @@
   <x:String x:Key="Text.CommitCM.CopySHA" xml:space="preserve">SHA</x:String>
   <x:String x:Key="Text.CommitCM.CopySubject" xml:space="preserve">タイトル</x:String>
   <x:String x:Key="Text.CommitCM.CustomAction" xml:space="preserve">カスタムアクション</x:String>
-  <x:String x:Key="Text.CommitCM.Drop" xml:space="preserve">コミットを削除</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase" xml:space="preserve">対話式リベース</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Drop" xml:space="preserve">削除...</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Edit" xml:space="preserve">編集...</x:String>
@@ -160,10 +159,7 @@
   <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">${0}$ を ${1}$ でリベース</x:String>
   <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">${0}$ を ${1}$ にリセット</x:String>
   <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">コミットを取り消す</x:String>
-  <x:String x:Key="Text.CommitCM.Reword" xml:space="preserve">書き直す</x:String>
   <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">パッチとして保存...</x:String>
-  <x:String x:Key="Text.CommitCM.Squash" xml:space="preserve">親コミットに記録付きで統合</x:String>
-  <x:String x:Key="Text.CommitCM.Fixup" xml:space="preserve">親コミットに統合</x:String>
   <x:String x:Key="Text.CommitDetail.Changes" xml:space="preserve">変更</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Count" xml:space="preserve">個の変更されたファイル</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Search" xml:space="preserve">変更を検索...</x:String>
@@ -380,9 +376,6 @@
   <x:String x:Key="Text.Discard.IncludeUntracked" xml:space="preserve">未追跡のファイルを含める</x:String>
   <x:String x:Key="Text.Discard.Total" xml:space="preserve">{0} 件の変更が破棄されます</x:String>
   <x:String x:Key="Text.Discard.Warning" xml:space="preserve">この操作は元に戻せません！！！</x:String>
-  <x:String x:Key="Text.DropHead" xml:space="preserve">コミットを削除</x:String>
-  <x:String x:Key="Text.DropHead.Commit" xml:space="preserve">コミット:</x:String>
-  <x:String x:Key="Text.DropHead.NewHead" xml:space="preserve">新しい HEAD:</x:String>
   <x:String x:Key="Text.EditBranchDescription" xml:space="preserve">ブランチの説明を編集</x:String>
   <x:String x:Key="Text.EditBranchDescription.Target" xml:space="preserve">対象:</x:String>
   <x:String x:Key="Text.EditRepositoryNode.Bookmark" xml:space="preserve">ブックマーク:</x:String>
@@ -801,7 +794,6 @@
   <x:String x:Key="Text.Revert" xml:space="preserve">コミットを取り消す</x:String>
   <x:String x:Key="Text.Revert.Commit" xml:space="preserve">コミット:</x:String>
   <x:String x:Key="Text.Revert.CommitChanges" xml:space="preserve">取り消しの変更をコミット</x:String>
-  <x:String x:Key="Text.Reword" xml:space="preserve">コミットメッセージを書き直す</x:String>
   <x:String x:Key="Text.Running" xml:space="preserve">実行しています。お待ちください...</x:String>
   <x:String x:Key="Text.Save" xml:space="preserve">保存</x:String>
   <x:String x:Key="Text.SaveAs" xml:space="preserve">名前を付けて保存...</x:String>
@@ -829,9 +821,6 @@
   <x:String x:Key="Text.SetUpstream.Upstream" xml:space="preserve">上流のブランチ:</x:String>
   <x:String x:Key="Text.SHALinkCM.CopySHA" xml:space="preserve">SHA をコピー</x:String>
   <x:String x:Key="Text.SHALinkCM.NavigateTo" xml:space="preserve">このコミットに移動</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Squash" xml:space="preserve">親コミットに記録付きで統合</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Fixup" xml:space="preserve">親コミットに統合</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Into" xml:space="preserve">統合先:</x:String>
   <x:String x:Key="Text.SSHKey" xml:space="preserve">SSH の秘密鍵:</x:String>
   <x:String x:Key="Text.SSHKey.Placeholder" xml:space="preserve">SSH の秘密鍵が保管されているパス</x:String>
   <x:String x:Key="Text.Start" xml:space="preserve">開始</x:String>

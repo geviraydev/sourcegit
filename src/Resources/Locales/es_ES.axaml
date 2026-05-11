@@ -160,7 +160,6 @@
   <x:String x:Key="Text.CommitCM.CopySHA" xml:space="preserve">SHA</x:String>
   <x:String x:Key="Text.CommitCM.CopySubject" xml:space="preserve">Asunto</x:String>
   <x:String x:Key="Text.CommitCM.CustomAction" xml:space="preserve">Acción personalizada</x:String>
-  <x:String x:Key="Text.CommitCM.Drop" xml:space="preserve">Eliminar Commit</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase" xml:space="preserve">Rebase interactivo</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Drop" xml:space="preserve">Eliminar...</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Edit" xml:space="preserve">Editar...</x:String>
@@ -174,10 +173,7 @@
   <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">Rebase ${0}$ en ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">Resetear ${0}$ a ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">Revertir Commit</x:String>
-  <x:String x:Key="Text.CommitCM.Reword" xml:space="preserve">Reescribir</x:String>
   <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">Guardar como Parche...</x:String>
-  <x:String x:Key="Text.CommitCM.Squash" xml:space="preserve">Squash en el Padre</x:String>
-  <x:String x:Key="Text.CommitCM.Fixup" xml:space="preserve">Arreglar en el Padre</x:String>
   <x:String x:Key="Text.CommitDetail.Changes" xml:space="preserve">CAMBIOS</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Count" xml:space="preserve">archivo(s) modificado(s)</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Search" xml:space="preserve">Buscar Cambios...</x:String>
@@ -401,9 +397,6 @@
   <x:String x:Key="Text.Discard.IncludeUntracked" xml:space="preserve">Incluir archivos no rastreados</x:String>
   <x:String x:Key="Text.Discard.Total" xml:space="preserve">Total {0} cambios serán descartados</x:String>
   <x:String x:Key="Text.Discard.Warning" xml:space="preserve">¡No puedes deshacer esta acción!</x:String>
-  <x:String x:Key="Text.DropHead" xml:space="preserve">Eliminar Commit</x:String>
-  <x:String x:Key="Text.DropHead.Commit" xml:space="preserve">Commit:</x:String>
-  <x:String x:Key="Text.DropHead.NewHead" xml:space="preserve">Nuevo HEAD:</x:String>
   <x:String x:Key="Text.EditBranchDescription" xml:space="preserve">Editar la descripción de la rama</x:String>
   <x:String x:Key="Text.EditBranchDescription.Target" xml:space="preserve">Destino:</x:String>
   <x:String x:Key="Text.EditRepositoryNode.Bookmark" xml:space="preserve">Marcador:</x:String>
@@ -834,7 +827,6 @@
   <x:String x:Key="Text.Revert" xml:space="preserve">Revertir Commit</x:String>
   <x:String x:Key="Text.Revert.Commit" xml:space="preserve">Commit:</x:String>
   <x:String x:Key="Text.Revert.CommitChanges" xml:space="preserve">Commit revertir cambios</x:String>
-  <x:String x:Key="Text.Reword" xml:space="preserve">Reescribir Mensaje de Commit</x:String>
   <x:String x:Key="Text.Running" xml:space="preserve">Ejecutando. Por favor espera...</x:String>
   <x:String x:Key="Text.Save" xml:space="preserve">GUARDAR</x:String>
   <x:String x:Key="Text.SaveAs" xml:space="preserve">Guardar Como...</x:String>
@@ -862,9 +854,6 @@
   <x:String x:Key="Text.SetUpstream.Upstream" xml:space="preserve">Upstream:</x:String>
   <x:String x:Key="Text.SHALinkCM.CopySHA" xml:space="preserve">Copiar SHA</x:String>
   <x:String x:Key="Text.SHALinkCM.NavigateTo" xml:space="preserve">Ir a</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Squash" xml:space="preserve">Squash HEAD en el Padre</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Fixup" xml:space="preserve">Fixup HEAD en el Padre</x:String>
-  <x:String x:Key="Text.SquashOrFixup.Into" xml:space="preserve">En:</x:String>
   <x:String x:Key="Text.SSHKey" xml:space="preserve">Clave Privada SSH:</x:String>
   <x:String x:Key="Text.SSHKey.Placeholder" xml:space="preserve">Ruta de almacenamiento de la clave privada SSH</x:String>
   <x:String x:Key="Text.Start" xml:space="preserve">INICIAR</x:String>

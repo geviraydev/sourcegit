@@ -136,7 +136,6 @@
   <x:String x:Key="Text.CommitCM.CopySHA" xml:space="preserve">SHA</x:String>
   <x:String x:Key="Text.CommitCM.CopySubject" xml:space="preserve">Sujet</x:String>
   <x:String x:Key="Text.CommitCM.CustomAction" xml:space="preserve">Action personnalisée</x:String>
-  <x:String x:Key="Text.CommitCM.Drop" xml:space="preserve">Supprimer le Commit</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase" xml:space="preserve">Rebase Interactif</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Drop" xml:space="preserve">Supprimer...</x:String>
   <x:String x:Key="Text.CommitCM.InteractiveRebase.Edit" xml:space="preserve">Modifier...</x:String>
@@ -150,10 +149,7 @@
   <x:String x:Key="Text.CommitCM.Rebase" xml:space="preserve">Rebaser ${0}$ sur ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.Reset" xml:space="preserve">Réinitialiser ${0}$ sur ${1}$</x:String>
   <x:String x:Key="Text.CommitCM.Revert" xml:space="preserve">Annuler le commit</x:String>
-  <x:String x:Key="Text.CommitCM.Reword" xml:space="preserve">Reformuler</x:String>
   <x:String x:Key="Text.CommitCM.SaveAsPatch" xml:space="preserve">Enregistrer en tant que patch...</x:String>
-  <x:String x:Key="Text.CommitCM.Squash" xml:space="preserve">Squash dans le Parent</x:String>
-  <x:String x:Key="Text.CommitCM.Fixup" xml:space="preserve">Fixup dans le Parent</x:String>
   <x:String x:Key="Text.CommitDetail.Changes" xml:space="preserve">CHANGEMENTS</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Count" xml:space="preserve">fichier(s) modifié(s)</x:String>
   <x:String x:Key="Text.CommitDetail.Changes.Search" xml:space="preserve">Rechercher les changements...</x:String>
@@ -368,9 +364,6 @@
   <x:String x:Key="Text.Discard.IncludeUntracked" xml:space="preserve">Inclure les fichiers non suivis</x:String>
   <x:String x:Key="Text.Discard.Total" xml:space="preserve">{0} changements seront rejetés</x:String>
   <x:String x:Key="Text.Discard.Warning" xml:space="preserve">Vous ne pouvez pas annuler cette action !!!</x:String>
-  <x:String x:Key="Text.DropHead" xml:space="preserve">Supprimer le Commit</x:String>
-  <x:String x:Key="Text.DropHead.Commit" xml:space="preserve">Commit :</x:String>
-  <x:String x:Key="Text.DropHead.NewHead" xml:space="preserve">Nouveau HEAD :</x:String>
   <x:String x:Key="Text.EditRepositoryNode.Bookmark" xml:space="preserve">Signet :</x:String>
   <x:String x:Key="Text.EditRepositoryNode.Name" xml:space="preserve">Nouveau nom :</x:String>
   <x:String x:Key="Text.EditRepositoryNode.Target" xml:space="preserve">Cible :</x:String>
@@ -751,7 +744,6 @@
   <x:String x:Key="Text.Revert" xml:space="preserve">Annuler le Commit</x:String>
   <x:String x:Key="Text.Revert.Commit" xml:space="preserve">Commit :</x:String>
   <x:String x:Key="Text.Revert.CommitChanges" xml:space="preserve">Commit les changements de l'annulation</x:String>
-  <x:String x:Key="Text.Reword" xml:space="preserve">Reformuler le message de commit</x:String>
   <x:String x:Key="Text.Running" xml:space="preserve">En exécution. Veuillez patienter...</x:String>
   <x:String x:Key="Text.Save" xml:space="preserve">SAUVEGARDER</x:String>
   <x:String x:Key="Text.SaveAs" xml:space="preserve">Sauvegarder en tant que...</x:String>
