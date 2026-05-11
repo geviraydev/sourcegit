@@ -503,6 +503,8 @@
   <x:String x:Key="Text.Histories.Tips" xml:space="preserve">可以按住 Ctrl 或 Shift 键选择多个提交</x:String>
   <x:String x:Key="Text.Histories.Tips.MacOS" xml:space="preserve">可以按住 ⌘ 或 ⇧ 键选择多个提交</x:String>
   <x:String x:Key="Text.Histories.Tips.Prefix" xml:space="preserve">小提示:</x:String>
+  <x:String x:Key="Text.HistoriesDetailsStandalone.CommitDetail" xml:space="preserve">提交详情</x:String>
+  <x:String x:Key="Text.HistoriesDetailsStandalone.RevisionCompare" xml:space="preserve">比较</x:String>
   <x:String x:Key="Text.Hotkeys" xml:space="preserve">快捷键参考</x:String>
   <x:String x:Key="Text.Hotkeys.Global" xml:space="preserve">全局快捷键</x:String>
   <x:String x:Key="Text.Hotkeys.Global.Clone" xml:space="preserve">克隆远程仓库</x:String>

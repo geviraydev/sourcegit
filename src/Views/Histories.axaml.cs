@@ -616,6 +616,27 @@ namespace SourceGit.Views
                 vm.IsCollapseDetails = false;
         }
 
+        private void OnOpenDetailsAsStandalone(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ViewModels.Histories vm)
+            {
+                if (vm.DetailContext is ViewModels.CommitDetail detail)
+                {
+                    var standalone = new HistoriesDetailsStandalone();
+                    standalone.DataContext = detail.Clone();
+                    standalone.Show(TopLevel.GetTopLevel(this) as Window);
+                }
+                else if (vm.DetailContext is ViewModels.RevisionCompare compare)
+                {
+                    var standalone = new HistoriesDetailsStandalone();
+                    standalone.DataContext = compare.Clone();
+                    standalone.Show(TopLevel.GetTopLevel(this) as Window);
+                }
+            }
+
+            e.Handled = true;
+        }
+
         private ContextMenu CreateContextMenuForMultipleCommits(ViewModels.Repository repo, List<Models.Commit> selected)
         {
             var canCherryPick = true;
