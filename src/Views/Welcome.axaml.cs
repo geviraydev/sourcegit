@@ -53,13 +53,6 @@ namespace SourceGit.Views
                 base.OnKeyDown(e);
         }
 
-        private void Select(object item)
-        {
-            SelectedItem = item;
-            ScrollIntoView(item);
-            ContainerFromItem(item)?.Focus();
-        }
-
         private ViewModels.RepositoryNode FindParent(ViewModels.RepositoryNode item)
         {
             if (item.Depth == 0)

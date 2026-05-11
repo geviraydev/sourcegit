@@ -107,7 +107,7 @@ namespace SourceGit.Views
         }
     }
 
-    public class RevisionFileRowsListBox : ListBox
+    public class RevisionFileRowsListBox : ListBoxEx
     {
         protected override Type StyleKeyOverride => typeof(ListBox);
 
@@ -204,13 +204,6 @@ namespace SourceGit.Views
 
             if (!e.Handled)
                 base.OnKeyDown(e);
-        }
-
-        private void Select(object item)
-        {
-            SelectedItem = item;
-            ScrollIntoView(item);
-            ContainerFromItem(item)?.Focus();
         }
 
         private ViewModels.RevisionFileTreeNode FindParent(ViewModels.RevisionFileTreeNode item)
