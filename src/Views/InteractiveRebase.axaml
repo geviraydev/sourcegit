@@ -241,7 +241,7 @@
               </StackPanel>
             </DataTemplate>
             <DataTemplate DataType="vm:CommitDetail">
-              <v:CommitDetail/>
+              <v:CommitDetail IsDetailsPanelExpanded="True"/>
             </DataTemplate>
           </ContentControl.DataTemplates>
         </ContentControl>
