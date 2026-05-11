@@ -956,14 +956,24 @@ namespace SourceGit.Views
 
                 if (commit.IsMerged && commit.Parents.Count > 0)
                 {
-                    var manually = new MenuItem();
-                    manually.Header = App.Text("CommitCM.InteractiveRebase.Manually", current.Name, target);
-                    manually.Icon = this.CreateMenuIcon("Icons.InteractiveRebase");
-                    manually.Click += async (_, e) =>
+                    var interactiveRebase = new MenuItem();
+                    interactiveRebase.Header = App.Text("CommitCM.InteractiveRebase");
+                    interactiveRebase.Icon = this.CreateMenuIcon("Icons.InteractiveRebase");
+
+                    if (!isHead)
                     {
-                        await this.ShowDialogAsync(new ViewModels.InteractiveRebase(repo, commit));
-                        e.Handled = true;
-                    };
+                        var manually = new MenuItem();
+                        manually.Header = App.Text("CommitCM.InteractiveRebase.Manually", current.Name, target);
+                        manually.Icon = this.CreateMenuIcon("Icons.InteractiveRebase");
+                        manually.Click += async (_, e) =>
+                        {
+                            await this.ShowDialogAsync(new ViewModels.InteractiveRebase(repo, commit));
+                            e.Handled = true;
+                        };
+
+                        interactiveRebase.Items.Add(manually);
+                        interactiveRebase.Items.Add(new MenuItem() { Header = "-" });
+                    }
 
                     var reword = new MenuItem();
                     reword.Header = App.Text("CommitCM.InteractiveRebase.Reword");
@@ -1010,11 +1020,6 @@ namespace SourceGit.Views
                         e.Handled = true;
                     };
 
-                    var interactiveRebase = new MenuItem();
-                    interactiveRebase.Header = App.Text("CommitCM.InteractiveRebase");
-                    interactiveRebase.Icon = this.CreateMenuIcon("Icons.InteractiveRebase");
-                    interactiveRebase.Items.Add(manually);
-                    interactiveRebase.Items.Add(new MenuItem() { Header = "-" });
                     interactiveRebase.Items.Add(reword);
                     interactiveRebase.Items.Add(edit);
                     interactiveRebase.Items.Add(squash);
