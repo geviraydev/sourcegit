@@ -4,11 +4,12 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:vm="using:SourceGit.ViewModels"
                     xmlns:v="using:SourceGit.Views"
-                    xmlns:c="using:SourceGit.Converters"
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-                    x:Class="SourceGit.Views.HistoriesDetailsStandalone"
+                    x:Class="SourceGit.Views.CommitDetailStandalone"
+                    x:DataType="vm:CommitDetail"
                     x:Name="ThisControl"
                     Icon="/App.ico"
+                    Title="{DynamicResource Text.HistoriesDetailsStandalone.CommitDetail}"
                     MinWidth="1280" MinHeight="720"
                     WindowStartupLocation="CenterOwner">
   <Grid RowDefinitions="Auto,*">
@@ -29,23 +30,13 @@
       <TextBlock Classes="bold"
                  HorizontalAlignment="Center" VerticalAlignment="Center"
                  IsHitTestVisible="False"
-                 Text="{Binding #ThisControl.Title, Mode=OneWay}"/>
+                 Text="{DynamicResource Text.HistoriesDetailsStandalone.CommitDetail}"/>
 
       <!-- Caption Buttons (Windows/Linux) -->
       <v:CaptionButtons HorizontalAlignment="Right" IsVisible="{OnPlatform True, macOS=False}"/>
     </Grid>
 
     <!-- Body -->
-    <ContentControl Grid.Row="1" Content="{Binding #ThisControl.DataContext}">
-      <ContentControl.DataTemplates>
-        <DataTemplate DataType="vm:CommitDetail">
-          <v:CommitDetail IsDetailsPanelExpanded="True"/>
-        </DataTemplate>
-
-        <DataTemplate DataType="vm:RevisionCompare">
-          <v:RevisionCompare/>
-        </DataTemplate>
-      </ContentControl.DataTemplates>
-    </ContentControl>
+    <v:CommitDetail Grid.Row="1" IsDetailsPanelExpanded="True"/>
   </Grid>
 </v:ChromelessWindow>

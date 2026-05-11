@@ -622,13 +622,13 @@ namespace SourceGit.Views
             {
                 if (vm.DetailContext is ViewModels.CommitDetail detail)
                 {
-                    var standalone = new HistoriesDetailsStandalone();
+                    var standalone = new CommitDetailStandalone();
                     standalone.DataContext = detail.Clone();
                     standalone.Show(TopLevel.GetTopLevel(this) as Window);
                 }
                 else if (vm.DetailContext is ViewModels.RevisionCompare compare)
                 {
-                    var standalone = new HistoriesDetailsStandalone();
+                    var standalone = new RevisionCompareStandalone();
                     standalone.DataContext = compare.Clone();
                     standalone.Show(TopLevel.GetTopLevel(this) as Window);
                 }
