@@ -369,45 +369,6 @@ namespace SourceGit.ViewModels
             }
         }
 
-        public async Task RewordHeadAsync(Models.Commit head)
-        {
-            if (_repo.CanCreatePopup())
-            {
-                var message = await new Commands.QueryCommitFullMessage(_repo.FullPath, head.SHA).GetResultAsync();
-                _repo.ShowPopup(new Reword(_repo, head, message));
-            }
-        }
-
-        public async Task SquashOrFixupHeadAsync(Models.Commit head, bool fixup)
-        {
-            if (head.Parents.Count == 1)
-            {
-                var parent = await new Commands.QuerySingleCommit(_repo.FullPath, head.Parents[0]).GetResultAsync();
-                if (parent == null)
-                    return;
-
-                string message = await new Commands.QueryCommitFullMessage(_repo.FullPath, head.Parents[0]).GetResultAsync();
-                if (!fixup)
-                {
-                    var headMessage = await new Commands.QueryCommitFullMessage(_repo.FullPath, head.SHA).GetResultAsync();
-                    message = $"{message}\n\n{headMessage}";
-                }
-
-                if (_repo.CanCreatePopup())
-                    _repo.ShowPopup(new SquashOrFixupHead(_repo, parent, message, fixup));
-            }
-        }
-
-        public async Task DropHeadAsync(Models.Commit head)
-        {
-            var parent = _commits.Find(x => x.SHA.Equals(head.Parents[0]));
-            if (parent == null)
-                parent = await new Commands.QuerySingleCommit(_repo.FullPath, head.Parents[0]).GetResultAsync();
-
-            if (parent != null && _repo.CanCreatePopup())
-                _repo.ShowPopup(new DropHead(_repo, head, parent));
-        }
-
         public async Task<string> GetCommitFullMessageAsync(Models.Commit commit)
         {
             return await new Commands.QueryCommitFullMessage(_repo.FullPath, commit.SHA)
