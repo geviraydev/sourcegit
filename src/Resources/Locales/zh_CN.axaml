@@ -552,6 +552,7 @@
   <x:String x:Key="Text.InProgress.Revert.Head" xml:space="preserve">正在回滚提交</x:String>
   <x:String x:Key="Text.InteractiveRebase" xml:space="preserve">交互式变基</x:String>
   <x:String x:Key="Text.InteractiveRebase.AutoStash" xml:space="preserve">自动贮藏并恢复本地变更</x:String>
+  <x:String x:Key="Text.InteractiveRebase.NoVerify" xml:space="preserve">绕过 pre-rebase 钩子</x:String>
   <x:String x:Key="Text.InteractiveRebase.On" xml:space="preserve">起始提交 ：</x:String>
   <x:String x:Key="Text.InteractiveRebase.ReorderTip" xml:space="preserve">拖拽以便对提交重新排序</x:String>
   <x:String x:Key="Text.InteractiveRebase.Target" xml:space="preserve">目标分支 ：</x:String>
@@ -728,6 +729,7 @@
   <x:String x:Key="Text.Quit" xml:space="preserve">退出</x:String>
   <x:String x:Key="Text.Rebase" xml:space="preserve">变基(rebase)操作</x:String>
   <x:String x:Key="Text.Rebase.AutoStash" xml:space="preserve">自动贮藏并恢复本地变更</x:String>
+  <x:String x:Key="Text.Rebase.NoVerify" xml:space="preserve">绕过 pre-rebase 钩子</x:String>
   <x:String x:Key="Text.Rebase.On" xml:space="preserve">目标提交 ：</x:String>
   <x:String x:Key="Text.Remote.AddTitle" xml:space="preserve">添加远程仓库</x:String>
   <x:String x:Key="Text.Remote.EditTitle" xml:space="preserve">编辑远程仓库</x:String>

@@ -548,6 +548,7 @@
   <x:String x:Key="Text.InProgress.Revert.Head" xml:space="preserve">Reverting commit</x:String>
   <x:String x:Key="Text.InteractiveRebase" xml:space="preserve">Interactive Rebase</x:String>
   <x:String x:Key="Text.InteractiveRebase.AutoStash" xml:space="preserve">Stash &amp; reapply local changes</x:String>
+  <x:String x:Key="Text.InteractiveRebase.NoVerify" xml:space="preserve">Bypass the pre-rebase hook</x:String>
   <x:String x:Key="Text.InteractiveRebase.On" xml:space="preserve">On:</x:String>
   <x:String x:Key="Text.InteractiveRebase.ReorderTip" xml:space="preserve">Drag-drop to reorder commits</x:String>
   <x:String x:Key="Text.InteractiveRebase.Target" xml:space="preserve">Target Branch:</x:String>
@@ -724,6 +725,7 @@
   <x:String x:Key="Text.Quit" xml:space="preserve">Quit</x:String>
   <x:String x:Key="Text.Rebase" xml:space="preserve">Rebase Current Branch</x:String>
   <x:String x:Key="Text.Rebase.AutoStash" xml:space="preserve">Stash &amp; reapply local changes</x:String>
+  <x:String x:Key="Text.Rebase.NoVerify" xml:space="preserve">Bypass the pre-rebase hook</x:String>
   <x:String x:Key="Text.Rebase.On" xml:space="preserve">On:</x:String>
   <x:String x:Key="Text.Remote.AddTitle" xml:space="preserve">Add Remote</x:String>
   <x:String x:Key="Text.Remote.EditTitle" xml:space="preserve">Edit Remote</x:String>

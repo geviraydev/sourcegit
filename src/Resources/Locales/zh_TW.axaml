@@ -552,6 +552,7 @@
   <x:String x:Key="Text.InProgress.Revert.Head" xml:space="preserve">正在復原提交</x:String>
   <x:String x:Key="Text.InteractiveRebase" xml:space="preserve">互動式重定基底</x:String>
   <x:String x:Key="Text.InteractiveRebase.AutoStash" xml:space="preserve">自動擱置變更並復原本機變更</x:String>
+  <x:String x:Key="Text.InteractiveRebase.NoVerify" xml:space="preserve">繞過 pre-rebase 鉤子</x:String>
   <x:String x:Key="Text.InteractiveRebase.On" xml:space="preserve">起始提交:</x:String>
   <x:String x:Key="Text.InteractiveRebase.ReorderTip" xml:space="preserve">拖曳以重新排序提交</x:String>
   <x:String x:Key="Text.InteractiveRebase.Target" xml:space="preserve">目標分支:</x:String>
@@ -728,6 +729,7 @@
   <x:String x:Key="Text.Quit" xml:space="preserve">結束</x:String>
   <x:String x:Key="Text.Rebase" xml:space="preserve">重定基底 (rebase) 操作</x:String>
   <x:String x:Key="Text.Rebase.AutoStash" xml:space="preserve">自動擱置變更並復原本機變更</x:String>
+  <x:String x:Key="Text.Rebase.NoVerify" xml:space="preserve">繞過 pre-rebase 鉤子</x:String>
   <x:String x:Key="Text.Rebase.On" xml:space="preserve">目標提交:</x:String>
   <x:String x:Key="Text.Remote.AddTitle" xml:space="preserve">新增遠端存放庫</x:String>
   <x:String x:Key="Text.Remote.EditTitle" xml:space="preserve">編輯遠端存放庫</x:String>
