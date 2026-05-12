@@ -128,7 +128,7 @@
                   Cursor="BottomRightCorner"
                   Tag="{x:Static WindowEdge.SouthEast}"/>
 
-          <Grid Margin="{TemplateBinding Padding}" Effect="drop-shadow(0 0 12 #A0000000)">
+          <Grid Margin="{TemplateBinding Padding}" Effect="drop-shadow(0 0 12 #60000000)">
             <Border x:Name="PART_ContentRoot"
                     Background="{DynamicResource Brush.Window}"
                     BorderBrush="{DynamicResource Brush.WindowBorder}"
