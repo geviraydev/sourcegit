@@ -229,7 +229,7 @@ namespace SourceGit.Views
                     return;
                 }
 
-                if (e.Key == Key.T)
+                if (e.Key == Key.T && e.KeyModifiers == cmdKey)
                 {
                     vm.AddNewTab();
                     e.Handled = true;

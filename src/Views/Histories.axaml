@@ -23,17 +23,7 @@
       <ColumnDefinition Width="{Binding RightArea, Mode=TwoWay}" MinWidth="100"/>
     </v:HistoriesLayout.ColumnDefinitions>
 
-    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-      <!-- DataGrid hardcodes all the arrow keys, so we need a fake button to intercept this shortcut key -->
-      <Button Width="0" Height="0"
-              Click="OnGotoParent"
-              HotKey="Alt+Down"
-              IsVisible="False"/>
-      <Button Width="0" Height="0"
-              Click="OnGotoChild"
-              HotKey="Alt+Up"
-              IsVisible="False"/>
-      
+    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">      
       <v:HistoriesCommitList x:Name="CommitListContainer"
                              Classes="static_scrollbar"
                              ScrollViewer.AllowAutoHide="False"
@@ -45,8 +35,7 @@
                              RowHeight="26"
                              LayoutUpdated="OnCommitListLayoutUpdated"
                              ContextRequested="OnCommitListContextRequested"
-                             DoubleTapped="OnCommitListDoubleTapped"
-                             KeyDown="OnCommitListKeyDown">
+                             DoubleTapped="OnCommitListDoubleTapped">
         <DataGrid.Styles>
           <Style Selector="DataGrid.static_scrollbar">
             <Style Selector="^ /template/ DataGridRowsPresenter#PART_RowsPresenter">

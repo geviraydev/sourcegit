@@ -200,6 +200,66 @@ namespace SourceGit.Views
             }
         }
 
+        protected override async void OnKeyDown(KeyEventArgs e)
+        {
+            if (e.KeyModifiers == KeyModifiers.Alt)
+            {
+                if (e.Key == Key.Up)
+                {
+                    e.Handled = true;
+                    await this.FindAncestorOfType<Histories>()?.GotoChild();
+                }
+                else if (e.Key == Key.Down)
+                {
+                    e.Handled = true;
+                    await this.FindAncestorOfType<Histories>()?.GotoParent();
+                }
+            }
+            else if (e.KeyModifiers.HasFlag(OperatingSystem.IsMacOS() ? KeyModifiers.Meta : KeyModifiers.Control) &&
+                SelectedItems is { Count: > 0 } selected)
+            {
+                if (e.Key == Key.C)
+                {
+                    var builder = new StringBuilder();
+                    foreach (var item in selected)
+                    {
+                        if (item is Models.Commit commit)
+                            builder.Append(commit.SHA.AsSpan(0, 10)).Append(" - ").AppendLine(commit.Subject);
+                    }
+
+                    e.Handled = true;
+                    await this.CopyTextAsync(builder.ToString());
+                }
+                else if (e.Key == Key.B && e.KeyModifiers.HasFlag(KeyModifiers.Shift))
+                {
+                    var repoView = this.FindAncestorOfType<Repository>();
+                    if (repoView is { DataContext: ViewModels.Repository repo } &&
+                        repo.CanCreatePopup() &&
+                        selected.Count == 1 &&
+                        selected[0] is Models.Commit c)
+                    {
+                        repo.ShowPopup(new ViewModels.CreateBranch(repo, c));
+                        e.Handled = true;
+                    }
+                }
+                else if (e.Key == Key.T && e.KeyModifiers.HasFlag(KeyModifiers.Shift))
+                {
+                    var repoView = this.FindAncestorOfType<Repository>();
+                    if (repoView is { DataContext: ViewModels.Repository repo } &&
+                        repo.CanCreatePopup() &&
+                        selected.Count == 1 &&
+                        selected[0] is Models.Commit c)
+                    {
+                        repo.ShowPopup(new ViewModels.CreateTag(repo, c));
+                        e.Handled = true;
+                    }
+                }
+            }
+
+            if (!e.Handled)
+                base.OnKeyDown(e);
+        }
+
         private void ApplySelection()
         {
             _ignoreSelectionChanged = true;
@@ -308,7 +368,7 @@ namespace SourceGit.Views
             InitializeComponent();
         }
 
-        private async void OnGotoParent(object sender, RoutedEventArgs e)
+        public async Task GotoParent()
         {
             if (DataContext is not ViewModels.Histories vm)
                 return;
@@ -325,7 +385,6 @@ namespace SourceGit.Views
             if (commit.Parents.Count == 1)
             {
                 vm.NavigateTo(commit.Parents[0]);
-                e.Handled = true;
                 return;
             }
 
@@ -350,11 +409,9 @@ namespace SourceGit.Views
                 if (c != null)
                     vm.NavigateTo(c.SHA);
             }
-
-            e.Handled = true;
         }
 
-        private async void OnGotoChild(object sender, RoutedEventArgs e)
+        public async Task GotoChild()
         {
             if (DataContext is not ViewModels.Histories vm)
                 return;
@@ -395,8 +452,6 @@ namespace SourceGit.Views
                 if (c != null)
                     vm.NavigateTo(c.SHA);
             }
-
-            e.Handled = true;
         }
 
         private void OnCommitListLayoutUpdated(object _1, EventArgs _2)
@@ -529,57 +584,6 @@ namespace SourceGit.Views
             }
 
             e.Handled = true;
-        }
-
-        private async void OnCommitListKeyDown(object sender, KeyEventArgs e)
-        {
-            if (!e.KeyModifiers.HasFlag(OperatingSystem.IsMacOS() ? KeyModifiers.Meta : KeyModifiers.Control))
-                return;
-
-            if (sender is DataGrid { SelectedItems: { Count: > 0 } selected })
-            {
-                if (e.Key == Key.C)
-                {
-                    var builder = new StringBuilder();
-                    foreach (var item in selected)
-                    {
-                        if (item is Models.Commit commit)
-                            builder.Append(commit.SHA.AsSpan(0, 10)).Append(" - ").AppendLine(commit.Subject);
-                    }
-
-                    await this.CopyTextAsync(builder.ToString());
-                    e.Handled = true;
-                    return;
-                }
-
-                if (e.Key == Key.B && e.KeyModifiers.HasFlag(KeyModifiers.Shift))
-                {
-                    var repoView = this.FindAncestorOfType<Repository>();
-                    if (repoView?.DataContext is not ViewModels.Repository repo || !repo.CanCreatePopup())
-                        return;
-
-                    if (selected.Count == 1 && selected[0] is Models.Commit commit)
-                    {
-                        repo.ShowPopup(new ViewModels.CreateBranch(repo, commit));
-                        e.Handled = true;
-                    }
-
-                    return;
-                }
-
-                if (e.Key == Key.T && e.KeyModifiers.HasFlag(KeyModifiers.Shift))
-                {
-                    var repoView = this.FindAncestorOfType<Repository>();
-                    if (repoView?.DataContext is not ViewModels.Repository repo || !repo.CanCreatePopup())
-                        return;
-
-                    if (selected.Count == 1 && selected[0] is Models.Commit commit)
-                    {
-                        repo.ShowPopup(new ViewModels.CreateTag(repo, commit));
-                        e.Handled = true;
-                    }
-                }
-            }
         }
 
         private async void OnCommitListDoubleTapped(object sender, TappedEventArgs e)
