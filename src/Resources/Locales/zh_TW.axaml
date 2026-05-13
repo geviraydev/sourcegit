@@ -203,6 +203,11 @@
   <x:String x:Key="Text.CommitMessageTextBox.Placeholder" xml:space="preserve">請輸入提交訊息，標題與詳細描述之間請使用單行空白區隔。</x:String>
   <x:String x:Key="Text.CommitMessageTextBox.SubjectCount" xml:space="preserve">標題</x:String>
   <x:String x:Key="Text.Compare" xml:space="preserve">比較</x:String>
+  <x:String x:Key="Text.Compare.Changes" xml:space="preserve">差異檔案</x:String>
+  <x:String x:Key="Text.Compare.Commits" xml:space="preserve">差異提交</x:String>
+  <x:String x:Key="Text.Compare.Commits.LeftOnly" xml:space="preserve">左側獨有提交</x:String>
+  <x:String x:Key="Text.Compare.Commits.RightOnly" xml:space="preserve">右側獨有提交</x:String>
+  <x:String x:Key="Text.Compare.Commits.Tips" xml:space="preserve">提示：如果比較的另一方是 HEAD，您可以揀選 (cherry-pick) 已選擇的提交(使用滑鼠右鍵)</x:String>
   <x:String x:Key="Text.Configure" xml:space="preserve">存放庫設定</x:String>
   <x:String x:Key="Text.Configure.CommitMessageTemplate" xml:space="preserve">提交訊息範本</x:String>
   <x:String x:Key="Text.Configure.CommitMessageTemplate.BuiltinVars" xml:space="preserve">內建參數:
