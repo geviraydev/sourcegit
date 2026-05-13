@@ -501,12 +501,6 @@
   <x:String x:Key="Text.Hotkeys.Repo.ViewChanges" xml:space="preserve">'変更' に切り替え</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewHistories" xml:space="preserve">'履歴' に切り替え</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewStashes" xml:space="preserve">'スタッシュ' に切り替え</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor" xml:space="preserve">テキストエディター</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.CloseSearch" xml:space="preserve">検索パネルを閉じる</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoNextMatch" xml:space="preserve">次の一致を検索</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoPrevMatch" xml:space="preserve">前の一致を検索</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.OpenExternalMergeTool" xml:space="preserve">外部の比較/マージツールで開く</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.Search" xml:space="preserve">検索パネルを開く</x:String>
   <x:String x:Key="Text.Hunk.Discard" xml:space="preserve">破棄</x:String>
   <x:String x:Key="Text.Hunk.Stage" xml:space="preserve">ステージに上げる</x:String>
   <x:String x:Key="Text.Hunk.Unstage" xml:space="preserve">ステージから降ろす</x:String>

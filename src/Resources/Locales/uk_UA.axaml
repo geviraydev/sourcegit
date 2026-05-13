@@ -355,11 +355,6 @@
   <x:String x:Key="Text.Hotkeys.Repo.ViewChanges" xml:space="preserve">Перейти до 'Зміни'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewHistories" xml:space="preserve">Перейти до 'Історія'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewStashes" xml:space="preserve">Перейти до 'Схованки'</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor" xml:space="preserve">ТЕКСТОВИЙ РЕДАКТОР</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.CloseSearch" xml:space="preserve">Закрити панель пошуку</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoNextMatch" xml:space="preserve">Знайти наступний збіг</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoPrevMatch" xml:space="preserve">Знайти попередній збіг</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.Search" xml:space="preserve">Відкрити панель пошуку</x:String>
   <x:String x:Key="Text.Hunk.Discard" xml:space="preserve">Скасувати</x:String>
   <x:String x:Key="Text.Hunk.Stage" xml:space="preserve">Індексувати</x:String>
   <x:String x:Key="Text.Hunk.Unstage" xml:space="preserve">Видалити з індексу</x:String>

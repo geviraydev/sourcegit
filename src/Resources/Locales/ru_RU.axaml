@@ -525,12 +525,6 @@
   <x:String x:Key="Text.Hotkeys.Repo.ViewChanges" xml:space="preserve">Переключить на «Изменения»</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewHistories" xml:space="preserve">Переключить на «Историю»</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewStashes" xml:space="preserve">Переключить на «Отложенные»</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor" xml:space="preserve">ТЕКСТОВЫЙ РЕДАКТОР</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.CloseSearch" xml:space="preserve">Закрыть панель поиска</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoNextMatch" xml:space="preserve">Найти следующее совпадение</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoPrevMatch" xml:space="preserve">Найти предыдущее совпадение</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.OpenExternalMergeTool" xml:space="preserve">Открыть во внешнем инструменте сравнения/слияния</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.Search" xml:space="preserve">Открыть панель поиска</x:String>
   <x:String x:Key="Text.Hunk.Discard" xml:space="preserve">Отклонить</x:String>
   <x:String x:Key="Text.Hunk.Stage" xml:space="preserve">Сформировать</x:String>
   <x:String x:Key="Text.Hunk.Unstage" xml:space="preserve">Расформировать</x:String>

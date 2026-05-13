@@ -461,12 +461,6 @@
   <x:String x:Key="Text.Hotkeys.Repo.ViewChanges" xml:space="preserve">Pindah ke 'Changes'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewHistories" xml:space="preserve">Pindah ke 'History'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewStashes" xml:space="preserve">Pindah ke 'Stashes'</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor" xml:space="preserve">TEXT EDITOR</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.CloseSearch" xml:space="preserve">Tutup panel pencarian</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoNextMatch" xml:space="preserve">Cari kecocokan berikutnya</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoPrevMatch" xml:space="preserve">Cari kecocokan sebelumnya</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.OpenExternalMergeTool" xml:space="preserve">Buka dengan diff/merge tool eksternal</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.Search" xml:space="preserve">Buka panel pencarian</x:String>
   <x:String x:Key="Text.Hunk.Discard" xml:space="preserve">Buang</x:String>
   <x:String x:Key="Text.Hunk.Stage" xml:space="preserve">Stage</x:String>
   <x:String x:Key="Text.Hunk.Unstage" xml:space="preserve">Unstage</x:String>

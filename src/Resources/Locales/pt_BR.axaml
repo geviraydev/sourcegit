@@ -363,11 +363,6 @@
   <x:String x:Key="Text.Hotkeys.Repo.ViewChanges" xml:space="preserve">Alternar para 'Mudanças'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewHistories" xml:space="preserve">Alternar para 'Históricos'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewStashes" xml:space="preserve">Alternar para 'Stashes'</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor" xml:space="preserve">EDITOR DE TEXTO</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.CloseSearch" xml:space="preserve">Fechar painel de busca</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoNextMatch" xml:space="preserve">Encontrar próxima correspondência</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoPrevMatch" xml:space="preserve">Encontrar correspondência anterior</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.Search" xml:space="preserve">Abrir painel de busca</x:String>
   <x:String x:Key="Text.Hunk.Discard" xml:space="preserve">Descartar</x:String>
   <x:String x:Key="Text.Hunk.Stage" xml:space="preserve">Preparar</x:String>
   <x:String x:Key="Text.Hunk.Unstage" xml:space="preserve">Despreparar</x:String>

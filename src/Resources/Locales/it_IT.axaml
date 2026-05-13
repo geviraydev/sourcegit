@@ -495,12 +495,6 @@ ${pure_files:N} Come ${files:N}, ma senza cartelle</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewChanges" xml:space="preserve">Passa a 'Modifiche'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewHistories" xml:space="preserve">Passa a 'Storico'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewStashes" xml:space="preserve">Passa a 'Stashes'</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor" xml:space="preserve">EDITOR TESTO</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.CloseSearch" xml:space="preserve">Chiudi il pannello di ricerca</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoNextMatch" xml:space="preserve">Trova il prossimo risultato</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoPrevMatch" xml:space="preserve">Trova il risultato precedente</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.OpenExternalMergeTool" xml:space="preserve">Apri con uno strumento di diff/merge esterno</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.Search" xml:space="preserve">Apri il pannello di ricerca</x:String>
   <x:String x:Key="Text.Hunk.Discard" xml:space="preserve">Scarta</x:String>
   <x:String x:Key="Text.Hunk.Stage" xml:space="preserve">Aggiungi in stage</x:String>
   <x:String x:Key="Text.Hunk.Unstage" xml:space="preserve">Rimuovi</x:String>

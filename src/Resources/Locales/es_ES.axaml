@@ -524,12 +524,6 @@
   <x:String x:Key="Text.Hotkeys.Repo.ViewChanges" xml:space="preserve">Cambiar a 'Cambios'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewHistories" xml:space="preserve">Cambiar a 'Historias'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewStashes" xml:space="preserve">Cambiar a 'Stashes'</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor" xml:space="preserve">EDITOR DE TEXTO</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.CloseSearch" xml:space="preserve">Cerrar panel de búsqueda</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoNextMatch" xml:space="preserve">Buscar siguiente coincidencia</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoPrevMatch" xml:space="preserve">Buscar coincidencia anterior</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.OpenExternalMergeTool" xml:space="preserve">Abrir con herramienta diff/merge externa</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.Search" xml:space="preserve">Abrir panel de búsqueda</x:String>
   <x:String x:Key="Text.Hunk.Discard" xml:space="preserve">Descartar</x:String>
   <x:String x:Key="Text.Hunk.Stage" xml:space="preserve">Stage</x:String>
   <x:String x:Key="Text.Hunk.Unstage" xml:space="preserve">Unstage</x:String>

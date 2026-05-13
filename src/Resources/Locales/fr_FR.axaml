@@ -479,12 +479,6 @@
   <x:String x:Key="Text.Hotkeys.Repo.ViewChanges" xml:space="preserve">Basculer vers 'Changements'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewHistories" xml:space="preserve">Basculer vers 'Historique'</x:String>
   <x:String x:Key="Text.Hotkeys.Repo.ViewStashes" xml:space="preserve">Basculer vers 'Stashes'</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor" xml:space="preserve">ÉDITEUR DE TEXTE</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.CloseSearch" xml:space="preserve">Fermer le panneau de recherche</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoNextMatch" xml:space="preserve">Trouver la prochaine correspondance</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.GotoPrevMatch" xml:space="preserve">Trouver la correspondance précédente</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.OpenExternalMergeTool" xml:space="preserve">Ouvrir avec l'outil externe de diff/fusion</x:String>
-  <x:String x:Key="Text.Hotkeys.TextEditor.Search" xml:space="preserve">Ouvrir le panneau de recherche</x:String>
   <x:String x:Key="Text.Hunk.Discard" xml:space="preserve">Rejeter</x:String>
   <x:String x:Key="Text.Hunk.Stage" xml:space="preserve">Indexer</x:String>
   <x:String x:Key="Text.Hunk.Unstage" xml:space="preserve">Retirer de l'index</x:String>
