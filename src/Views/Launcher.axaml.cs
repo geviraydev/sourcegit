@@ -178,6 +178,18 @@ namespace SourceGit.Views
                 }
             }
 
+            // Ctrl+` to open terminal. On macOS, Cmd+` is used to switch between windows
+            if (e is { Key: Key.OemTilde, KeyModifiers: KeyModifiers.Control })
+            {
+                if (vm.ActivePage.Data is ViewModels.Repository repo)
+                    Native.OS.OpenTerminal(repo.FullPath);
+                else
+                    ViewModels.Welcome.Instance.OpenTerminal();
+
+                e.Handled = true;
+                return;
+            }
+
             var cmdKey = OperatingSystem.IsMacOS() ? KeyModifiers.Meta : KeyModifiers.Control;
 
             if (vm.CommandPalette != null)
@@ -279,16 +291,7 @@ namespace SourceGit.Views
                             vm.CommandPalette = new ViewModels.RepositoryCommandPalette(repo);
                             e.Handled = true;
                             return;
-                        case Key.OemTilde:
-                            Native.OS.OpenTerminal(repo.FullPath);
-                            e.Handled = true;
-                            return;
                     }
-                }
-                else if (e.Key == Key.OemTilde)
-                {
-                    ViewModels.Welcome.Instance.OpenTerminal();
-                    e.Handled = true;
                 }
             }
             else if (e.Key == Key.Escape)
