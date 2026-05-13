@@ -76,7 +76,7 @@
           <TextBlock Grid.Row="9" Grid.Column="0" Classes="bold" Text="{OnPlatform 'Ctrl+-/=', macOS='⌘+-/='}"/>
           <TextBlock Grid.Row="9" Grid.Column="1" Margin="16,0,0,0" Text="{DynamicResource Text.Hotkeys.Global.Zoom}" />
 
-          <TextBlock Grid.Row="10" Grid.Column="0" Classes="bold" Text="Ctrl+`"/>
+          <TextBlock Grid.Row="10" Grid.Column="0" Classes="bold" Text="{OnPlatform Ctrl+`, macOS=^+`}"/>
           <TextBlock Grid.Row="10" Grid.Column="1" Margin="16,0,0,0" Text="{DynamicResource Text.Welcome.OpenTerminal}" />
 
           <TextBlock Grid.Row="11" Grid.Column="0" Classes="bold" Text="{OnPlatform Ctrl+Q, macOS=⌘+Q}"/>
