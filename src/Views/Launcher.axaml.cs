@@ -6,7 +6,6 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Platform;
-using Avalonia.VisualTree;
 
 namespace SourceGit.Views
 {
@@ -280,20 +279,16 @@ namespace SourceGit.Views
                             vm.CommandPalette = new ViewModels.RepositoryCommandPalette(repo);
                             e.Handled = true;
                             return;
-                    }
-                }
-                else
-                {
-                    var welcome = this.FindDescendantOfType<Welcome>();
-                    if (welcome != null)
-                    {
-                        if (e.Key == Key.F)
-                        {
-                            welcome.SearchBox.Focus();
+                        case Key.OemTilde:
+                            Native.OS.OpenTerminal(repo.FullPath);
                             e.Handled = true;
                             return;
-                        }
                     }
+                }
+                else if (e.Key == Key.OemTilde)
+                {
+                    ViewModels.Welcome.Instance.OpenTerminal();
+                    e.Handled = true;
                 }
             }
             else if (e.Key == Key.Escape)

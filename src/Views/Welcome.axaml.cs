@@ -129,6 +129,12 @@ namespace SourceGit.Views
             }
         }
 
+        private void OnSearchHotKey(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Focus(NavigationMethod.Directional);
+            e.Handled = true;
+        }
+
         private void OnClearSearchFilter(object sender, RoutedEventArgs e)
         {
             ViewModels.Welcome.Instance.ClearSearchFilter();
