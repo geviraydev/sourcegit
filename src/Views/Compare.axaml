@@ -230,8 +230,8 @@
           
           <Border BorderThickness="1" BorderBrush="{DynamicResource Brush.Border2}" CornerRadius="4">
             <StackPanel Orientation="Horizontal">
-              <Path Width="12" Height="12" Margin="4,2,0,0" Data="{StaticResource Icons.Check}" Fill="White" IsVisible="{Binding BaseHead.IsCurrentHead, Mode=OneWay}"/>
-              <TextBlock Text="{Binding BaseName}" Margin="4,0" Foreground="#FFF2F2F2"/>
+              <Path Width="12" Height="12" Margin="4,2,0,0" Data="{StaticResource Icons.Check}" IsVisible="{Binding BaseHead.IsCurrentHead, Mode=OneWay}"/>
+              <TextBlock Text="{Binding BaseName}" Margin="4,0"/>
             </StackPanel>
           </Border>
         </StackPanel>
@@ -302,8 +302,8 @@
 
           <Border BorderThickness="1" BorderBrush="{DynamicResource Brush.Border2}" CornerRadius="4">
             <StackPanel Orientation="Horizontal">
-              <Path Width="12" Height="12" Margin="4,2,0,0" Data="{StaticResource Icons.Check}" Fill="White" IsVisible="{Binding ToHead.IsCurrentHead, Mode=OneWay}"/>
-              <TextBlock Text="{Binding ToName}" Margin="4,0" Foreground="#FFF2F2F2"/>
+              <Path Width="12" Height="12" Margin="4,2,0,0" Data="{StaticResource Icons.Check}" IsVisible="{Binding ToHead.IsCurrentHead, Mode=OneWay}"/>
+              <TextBlock Text="{Binding ToName}" Margin="4,0"/>
             </StackPanel>
           </Border>
         </StackPanel>
