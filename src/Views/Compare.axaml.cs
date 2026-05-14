@@ -213,14 +213,16 @@ namespace SourceGit.Views
             if (sender is ListBox { SelectedItems: { Count: > 0 } selected } listBox)
             {
                 var commits = new List<Models.Commit>();
-                for (var i = selected.Count - 1; i >= 0; i--)
+                foreach (var o in selected)
                 {
-                    if (selected[i] is Models.Commit c)
+                    if (o is Models.Commit c)
                         commits.Add(c);
                 }
 
                 if (commits.Count == 0)
                     return;
+
+                commits.Sort((l, r) => l.CommitterTime.CompareTo(r.CommitterTime));
 
                 var menu = new ContextMenu();
                 var hasCurrentHead = vm.BaseHead.IsCurrentHead || vm.ToHead.IsCurrentHead;
