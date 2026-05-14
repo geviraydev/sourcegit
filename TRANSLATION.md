@@ -15,7 +15,7 @@ This document shows the translation status of each locale file in the repository
 - Text.AIAssistant.Use
 - Text.App.HideOthers
 - Text.Apply.3Way
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.CheckoutBranchFromStash
 - Text.CheckoutBranchFromStash.Branch
 - Text.CheckoutBranchFromStash.Stash
@@ -102,7 +102,7 @@ This document shows the translation status of each locale file in the repository
 - Text.BranchCM.CompareTwo
 - Text.BranchCM.CompareWith
 - Text.BranchCM.CompareWithHead
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.BranchCM.EditDescription
 - Text.ChangeCM.Merge
 - Text.ChangeCM.MergeExternal
@@ -222,7 +222,7 @@ This document shows the translation status of each locale file in the repository
 - Text.BranchCM.CompareTwo
 - Text.BranchCM.CompareWith
 - Text.BranchCM.CompareWithHead
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.BranchCM.CreatePR
 - Text.BranchCM.CreatePRForUpstream
 - Text.BranchCM.EditDescription
@@ -350,7 +350,7 @@ This document shows the translation status of each locale file in the repository
 - Text.AIAssistant.Use
 - Text.App.HideOthers
 - Text.Apply.3Way
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.ChangeCM.ResetFileTo
 - Text.CheckoutBranchFromStash
 - Text.CheckoutBranchFromStash.Branch
@@ -418,7 +418,7 @@ This document shows the translation status of each locale file in the repository
 - Text.AIAssistant.Use
 - Text.App.HideOthers
 - Text.Apply.3Way
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.CheckoutBranchFromStash
 - Text.CheckoutBranchFromStash.Branch
 - Text.CheckoutBranchFromStash.Stash
@@ -484,7 +484,7 @@ This document shows the translation status of each locale file in the repository
 - Text.BranchCM.CompareTwo
 - Text.BranchCM.CompareWith
 - Text.BranchCM.CompareWithHead
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.BranchCM.CreatePR
 - Text.BranchCM.CreatePRForUpstream
 - Text.BranchCM.EditDescription
@@ -614,7 +614,7 @@ This document shows the translation status of each locale file in the repository
 - Text.App.HideOthers
 - Text.Apply.3Way
 - Text.Blame.BlameOnPreviousRevision
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.BranchCM.InteractiveRebase.Manually
 - Text.BranchTree.AheadBehind
 - Text.BranchTree.Behind
@@ -994,7 +994,7 @@ This document shows the translation status of each locale file in the repository
 - Text.BranchCM.CompareTwo
 - Text.BranchCM.CompareWith
 - Text.BranchCM.CompareWithHead
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.BranchCM.CreatePR
 - Text.BranchCM.CreatePRForUpstream
 - Text.BranchCM.EditDescription
@@ -1315,7 +1315,7 @@ This document shows the translation status of each locale file in the repository
 - Text.BranchCM.CompareTwo
 - Text.BranchCM.CompareWith
 - Text.BranchCM.CompareWithHead
-- Text.BranchCM.CompareWithUpstream
+- Text.BranchCM.CompareWithSpecial
 - Text.BranchCM.CreatePR
 - Text.BranchCM.CreatePRForUpstream
 - Text.BranchCM.EditDescription
