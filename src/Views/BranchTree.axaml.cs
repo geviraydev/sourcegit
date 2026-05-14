@@ -754,7 +754,7 @@ namespace SourceGit.Views
                 if (upstream != null)
                 {
                     var compareWithUpstream = new MenuItem();
-                    compareWithUpstream.Header = App.Text("BranchCM.CompareWithUpstream", upstream.FriendlyName);
+                    compareWithUpstream.Header = App.Text("BranchCM.CompareWithSpecial", upstream.FriendlyName);
                     compareWithUpstream.Icon = this.CreateMenuIcon("Icons.Compare");
                     compareWithUpstream.Click += (_, _) =>
                     {
@@ -891,7 +891,7 @@ namespace SourceGit.Views
                 if (upstream != null)
                 {
                     var compareWithUpstream = new MenuItem();
-                    compareWithUpstream.Header = App.Text("BranchCM.CompareWithUpstream", upstream.FriendlyName);
+                    compareWithUpstream.Header = App.Text("BranchCM.CompareWithSpecial", upstream.FriendlyName);
                     compareWithUpstream.Icon = this.CreateMenuIcon("Icons.Compare");
                     compareWithUpstream.Click += (_, _) =>
                     {
