@@ -291,6 +291,16 @@ namespace SourceGit.Views
                             vm.CommandPalette = new ViewModels.RepositoryCommandPalette(repo);
                             e.Handled = true;
                             return;
+                        case Key.B when e.KeyModifiers.HasFlag(KeyModifiers.Shift):
+                            if (repo.CanCreatePopup() && repo.GetSelectedCommitInHistory() is { } bc)
+                                repo.ShowPopup(new ViewModels.CreateBranch(repo, bc));
+                            e.Handled = true;
+                            return;
+                        case Key.T when e.KeyModifiers.HasFlag(KeyModifiers.Shift):
+                            if (repo.CanCreatePopup() && repo.GetSelectedCommitInHistory() is { } tc)
+                                repo.ShowPopup(new ViewModels.CreateTag(repo, tc));
+                            e.Handled = true;
+                            return;
                     }
                 }
             }

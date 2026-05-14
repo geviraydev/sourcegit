@@ -216,44 +216,18 @@ namespace SourceGit.Views
                 }
             }
             else if (e.KeyModifiers.HasFlag(OperatingSystem.IsMacOS() ? KeyModifiers.Meta : KeyModifiers.Control) &&
-                SelectedItems is { Count: > 0 } selected)
+                SelectedItems is { Count: > 0 } selected &&
+                e.Key == Key.C)
             {
-                if (e.Key == Key.C)
+                var builder = new StringBuilder();
+                foreach (var item in selected)
                 {
-                    var builder = new StringBuilder();
-                    foreach (var item in selected)
-                    {
-                        if (item is Models.Commit commit)
-                            builder.Append(commit.SHA.AsSpan(0, 10)).Append(" - ").AppendLine(commit.Subject);
-                    }
+                    if (item is Models.Commit commit)
+                        builder.Append(commit.SHA.AsSpan(0, 10)).Append(" - ").AppendLine(commit.Subject);
+                }
 
-                    e.Handled = true;
-                    await this.CopyTextAsync(builder.ToString());
-                }
-                else if (e.Key == Key.B && e.KeyModifiers.HasFlag(KeyModifiers.Shift))
-                {
-                    var repoView = this.FindAncestorOfType<Repository>();
-                    if (repoView is { DataContext: ViewModels.Repository repo } &&
-                        repo.CanCreatePopup() &&
-                        selected.Count == 1 &&
-                        selected[0] is Models.Commit c)
-                    {
-                        repo.ShowPopup(new ViewModels.CreateBranch(repo, c));
-                        e.Handled = true;
-                    }
-                }
-                else if (e.Key == Key.T && e.KeyModifiers.HasFlag(KeyModifiers.Shift))
-                {
-                    var repoView = this.FindAncestorOfType<Repository>();
-                    if (repoView is { DataContext: ViewModels.Repository repo } &&
-                        repo.CanCreatePopup() &&
-                        selected.Count == 1 &&
-                        selected[0] is Models.Commit c)
-                    {
-                        repo.ShowPopup(new ViewModels.CreateTag(repo, c));
-                        e.Handled = true;
-                    }
-                }
+                e.Handled = true;
+                await this.CopyTextAsync(builder.ToString());
             }
 
             if (!e.Handled)
