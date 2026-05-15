@@ -301,6 +301,10 @@ namespace SourceGit.Views
                                 repo.ShowPopup(new ViewModels.CreateTag(repo, tc));
                             e.Handled = true;
                             return;
+                        case Key.E:
+                            Native.OS.OpenInFileManager(repo.FullPath);
+                            e.Handled = true;
+                            return;
                     }
                 }
             }
