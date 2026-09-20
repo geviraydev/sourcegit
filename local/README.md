@@ -22,6 +22,9 @@ git fork-update
 local/sync-and-install.sh
 ```
 
+There is also a `SourceGit Update (fork build)` entry in the KDE app menu that
+runs this script in a terminal.
+
 Options:
 
 ```
