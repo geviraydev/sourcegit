@@ -37,6 +37,29 @@ Options:
 If the rebase hits conflicts the script stops; resolve them, run
 `git rebase --continue`, then run the script again.
 
+## New machine setup
+
+Fresh clone of the fork:
+
+```
+git clone git@github.com:geviraydev/sourcegit.git
+cd sourcegit
+git remote add upstream https://github.com/sourcegit-scm/sourcegit.git
+git fetch upstream --prune --tags
+git switch feat/diff-line-totals
+git fetch origin local-tools
+git checkout origin/local-tools -- local/
+echo 'local/' >> .git/info/exclude
+mkdir -p ~/.local/bin
+ln -sfn "$PWD/local/sync-and-install.sh" ~/.local/bin/sourcegit-fork-update
+git config alias.fork-update '!local/sync-and-install.sh'
+git config alias.fork-tools '!cat local/README.md'
+```
+
+Then run `sourcegit-fork-update` or `git fork-update` to rebase, push, build,
+and install to `~/.local/opt/sourcegit`. The KDE app menu entry is optional and
+machine-specific; create it by hand if wanted.
+
 ## Backup copy
 
 The same files are mirrored on the `local-tools` branch of this fork, which is
