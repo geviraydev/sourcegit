@@ -9,6 +9,10 @@ Rebases `feat/diff-line-totals` onto `upstream/develop`, force-pushes the
 result to this fork, then rebuilds and reinstalls the local SourceGit build
 into `~/.local/opt/sourcegit`.
 
+It also fast-forwards the fork's `master` and `develop` (local branches and
+GitHub) to `upstream/master`/`upstream/develop`. Fast-forward only — if a
+branch has diverged it is skipped with a warning, never forced.
+
 Run from anywhere:
 
 ```
@@ -28,10 +32,11 @@ runs this script in a terminal.
 Options:
 
 ```
---no-push     sync only (no force-push)
---no-build    push only (no rebuild/install)
---aot         publish with NativeAOT (requires clang)
---help        usage
+--no-push            sync only (no force-push)
+--no-build           push only (no rebuild/install)
+--no-sync-branches   skip the master/develop fast-forward
+--aot                publish with NativeAOT (requires clang)
+--help               usage
 ```
 
 If the rebase hits conflicts the script stops; resolve them, run

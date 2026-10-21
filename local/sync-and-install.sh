@@ -15,6 +15,7 @@ RUNTIME=${RUNTIME:-linux-x64}
 DO_PUSH=1
 DO_BUILD=1
 USE_AOT=0
+SYNC_BRANCHES=1
 
 usage() {
     cat <<EOF
@@ -22,6 +23,8 @@ Usage: $(basename "$0") [options]
 
   --no-push     skip the force-push to the fork
   --no-build    skip publish/install (sync + push only)
+  --no-sync-branches
+                skip fast-forwarding fork's master/develop from upstream
   --aot         publish with NativeAOT (requires clang)
   -h, --help    show this help
 
@@ -34,6 +37,7 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --no-push)  DO_PUSH=0 ;;
         --no-build) DO_BUILD=0 ;;
+        --no-sync-branches) SYNC_BRANCHES=0 ;;
         --aot)      USE_AOT=1 ;;
         -h|--help)  usage ;;
         *) echo "Unknown option: $1"; usage; exit 1 ;;
@@ -63,6 +67,19 @@ git fetch upstream --prune --tags
 
 step "Checking out $BRANCH"
 git switch "$BRANCH"
+
+if [[ $SYNC_BRANCHES -eq 1 ]]; then
+    step "Fast-forwarding master/develop from upstream"
+    for b in master develop; do
+        if git fetch --quiet upstream "$b:$b" 2>/dev/null; then
+            if ! git push --quiet "$FORK_REMOTE" "refs/heads/$b:refs/heads/$b"; then
+                echo "warning: could not push '$b' to $FORK_REMOTE; skipped"
+            fi
+        else
+            echo "warning: '$b' was not fast-forwarded; skipped"
+        fi
+    done
+fi
 
 step "Rebasing $BRANCH onto $UPSTREAM_BRANCH"
 if ! git rebase "$UPSTREAM_BRANCH"; then
